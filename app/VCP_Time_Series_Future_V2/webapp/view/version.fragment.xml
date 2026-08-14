@@ -1,0 +1,12 @@
+
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="oVersionTSF" title="IBP Version" rememberSelections="true" contentWidth="15%" contentHeight="50%" search="handleSearch" liveChange="handleSearch"
+		confirm="handleSelection" cancel="handleClose" multiSelect="false" items="{/results}" 
+        selectionChange="handleProdChange" growing="false">
+		<StandardListItem title="{VERSION_NAME}" id="version" description="{VERSION}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>
+
+
+

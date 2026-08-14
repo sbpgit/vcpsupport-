@@ -1,0 +1,382 @@
+_schema-version: 3.3.0
+ID: vcpsupport
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+  deploy_mode: html5-repo
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+ 
+  - name: vcpsupport-app-deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: vcpsupport-repo-host
+        parameters:
+          content-target: true
+          config:
+            HTML5Runtime_enabled: true
+    build-parameters:
+      build-result: resources
+      requires:
+      - artifacts:
+        - vcpappsvcpactivityparameter.zip
+        name: vcpappsvcpactivityparameter
+        target-path: resources/
+
+      - artifacts:
+        - cdm.json
+        name: vcpsupport-workzone-cdm
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpmodelversion.zip
+        name: vcpappvcpmodelversion
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcppredictions.zip
+        name: vcpappvcppredictions
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcplocproduniqid.zip
+        name: vcpappvcplocproduniqid
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpjoblog.zip
+        name: vcpappvcpjoblog
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcptimeserieshistoryv2.zip
+        name: vcpappvcptimeserieshistoryv2
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcptimeseriesfuturev2.zip
+        name: vcpappvcptimeseriesfuturev2
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpoptimizedpredictions.zip
+        name: vcpappvcpoptimizedpredictions
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpibpcalendarmaintenance.zip
+        name: vcpappvcpibpcalendarmaintenance
+        target-path: resources/
+
+      - artifacts:
+        - vcpappruntimeerrorlogs.zip
+        name: vcpappruntimeerrorlogs
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpclusteringdistance.zip
+        name: vcpappvcpclusteringdistance
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpprodordconsumption.zip
+        name: vcpappvcpprodordconsumption
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcptimeserieshistoryv3.zip
+        name: vcpappvcptimeserieshistoryv3
+        target-path: resources/
+
+      - artifacts:
+        - vcpappvcpcriticalcomp.zip
+        name: vcpappvcpcriticalcomp
+        target-path: resources/
+
+  - name: vcpsupport-workzone-cdm
+    type: html5
+    path: workzone
+    build-parameters:
+      build-result: .
+      supported-platforms: []
+  - name: vcpappsvcpactivityparameter
+    type: html5
+    path: app/VCP_ActivityParameter
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []   
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcpmodelversion
+    type: html5
+    path: app/vcp_model_versions
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: [] 
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcppredictions
+    type: html5
+    path: app/VCP_PREDICTIONS
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcpjoblog
+    type: html5
+    path: app/vcp_joblog_tracker
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcplocproduniqid
+    type: html5
+    path: app/vcplocproduniqueid
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcptimeseriesfuturev2
+    type: html5
+    path: app/VCP_Time_Series_Future_V2
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcptimeserieshistoryv2
+    type: html5
+    path: app/VCP_TimeSeries_History_V2
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules
+      ignore:
+      - node_modules/ 
+      - dist/ 
+      supported-platforms: []
+
+
+  - name: vcpappvcpoptimizedpredictions
+    type: html5
+    path: app/VCP_Optimized_Predictions
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcpibpcalendarmaintenance
+    type: html5
+    path: app/VCP_IBPCALENDERWEEK_MAINTENANCE
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappruntimeerrorlogs
+    type: html5
+    path: app/VCP_APPLICATION_ERROR_LOGS
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcpclusteringdistance
+    type: html5
+    path: app/vcp_clustering_distance 
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcpprodordconsumption
+    type: html5
+    path: app/vcpprodordconsumption
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcptimeserieshistoryv3
+    type: html5
+    path: app/vcp_TimeSeries_History_Customer
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpappvcpcriticalcomp
+    type: html5
+    path: app/VCP_Critical_Assembly
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+      - npm install
+      - npm run build:cf
+      - rm -rf node_modules 
+      supported-platforms: []
+      ignore:
+      - node_modules/ 
+      - dist/ 
+
+  - name: vcpsupport-destinations
+    type: com.sap.application.content
+    requires:
+    - name: vcpsupport-repo-host
+      parameters:
+        service-key:
+          name: vcpsupport-repo-host-key
+    - name: vcpsupport-html5-runtime
+      parameters:
+        service-key:
+          name: vcpsupport-html5-app-runtime-service-key
+    - name: vcpsupport-destination
+      parameters:
+        content-target: true
+    parameters:
+      content:
+        subaccount:
+          destinations:
+          - Name: vcpsupport_cdm
+            ServiceInstanceName: vcpsupport-html5-runtime
+            ServiceKeyName: vcpsupport-html5-app-runtime-service-key
+            URL: https://html5-apps-repo-rt.cfapps.us10.hana.ondemand.com/applications/cdm/vcpsupport
+            sap.cloud.service: vcpsupport
+          existing_destinations_policy: update
+    build-parameters:
+      no-source: true
+
+resources:
+  - name: vcpsupport-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        ExposeToSubaccounts: true
+        HTML5Runtime_enabled: true
+        init_data:
+          subaccount:
+            destinations:
+            - Authentication: NoAuthentication
+              Name: ui5
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://ui5.sap.com
+            - Authentication: NoAuthentication
+              CEP.HTML5contentprovider: true
+              Name: vcpsupport-workzone-runtime
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://mttsbpdigital.launchpad.cfapps.us10.hana.ondemand.com
+            existing_destinations_policy: update
+
+  - name: vcpsupport-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+
+  - name: vcpsupport-html5-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime

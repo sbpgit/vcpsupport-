@@ -1,0 +1,22 @@
+<!-- <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="prodSlctList"
+		title="Product"
+		items="{/aItems}"
+		selectionChange="handleSelection"
+		multiSelect="true"
+		liveChange=".handleSearch"
+		confirm=".onVersionSelect"
+		cancel=".onVersionSelect">
+		<StandardListItem
+			title="{PRODUCT_ID}" description="{PROD_DESC}"  />
+	</SelectDialog>
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="prodSlctListTSF" title="{i18n>PrdId}" contentWidth="15%" contentHeight="50%" rememberSelections="true" search="handleSearch" liveChange="handleSearch"
+		confirm="handleSelection" cancel="handleClose" multiSelect="false"  items="{path: '/results', sorter: { path: 'PRODUCT_ID'}}" 
+        selectionChange="handleProdChange" growing="false">
+		<StandardListItem title="{PRODUCT_ID}" description="{PROD_DESC}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>

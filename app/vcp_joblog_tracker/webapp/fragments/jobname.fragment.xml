@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="jobnameJLT" title="JOB NAME" rememberSelections="false" search="handleSearch" liveChange="handleSearch"
+		confirm="handleSelection" cancel="handleClose"  contentWidth="450px" items="{/aItems}" 
+        selectionChange="handleProdChange" growing="false">
+		<StandardListItem title="{JOB_NAME}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>

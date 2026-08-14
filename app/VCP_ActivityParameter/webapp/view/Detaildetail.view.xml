@@ -1,0 +1,64 @@
+<mvc:View xmlns:f="sap.f"
+    controllerName="vcpapps.vcpactivityparameter.controller.Detaildetail"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m">
+    <Page> 
+	 <VBox >
+     <Bar >
+	 <contentMiddle>
+	 <Title text="Paramters"/>
+	 </contentMiddle>
+     <contentRight>
+      <Button type="Transparent" text="Edit" press="onEdit" tooltip=" Edit" ></Button>
+    </contentRight>
+     </Bar>
+     </VBox>
+	<content>
+     <Table
+            id="idparAP"
+            items="{path: '/items'}"
+            mode="MultiSelect"
+            sticky="HeaderToolbar,ColumnHeaders"
+            fixedLayout="false"
+            contextualWidth="Auto"
+            growing="true"
+            growingThreshold="100"
+            selectionChange="rowSelection" >
+        
+            <columns>
+                <Column
+                    hAlign="Left"
+                    vAlign="Middle">
+                
+                    <Text text="Parameter ID" />
+                </Column>
+                <Column
+                    hAlign="Left"
+                    vAlign="Middle">
+                    <Text text="Parameter Description" />
+                </Column>
+                <!-- <Column
+                    hAlign="Left"
+                    vAlign="Middle">
+                
+                    <Text text="Parameter Selection" />
+                </Column> -->
+                <!-- <Column hAlign="Center" vAlign="Middle">
+                        <Text text=""/>
+                    </Column> -->
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <Text text="{PARAMETER_ID}" />
+                    <Text text="{PARAM_DESC}" />
+                    <!-- <Text text="{OPTION_SELECT}" /> -->
+                    <!-- <Button icon="sap-icon://display" press="listParameters" tooltip="View Parameters"/> -->
+                </ColumnListItem>
+            </items>
+        </Table>
+		</content>
+    </Page>
+
+</mvc:View>

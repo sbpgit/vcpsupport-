@@ -1,0 +1,57 @@
+<core:FragmentDefinition xmlns="sap.m" displayBlock="true" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core">
+	<Dialog contentWidth="40%" id="idSettingsFragJLT" class="sapUiContentPadding" title="View Settings" >
+    
+		<content>
+		<IconTabBar id="idIconTabJLT" select="onTabSelect">
+			<items>
+				<IconTabFilter text="Columns" key = "Columns">
+					<List id="idListJLT" mode="MultiSelect" items="{path: '/items'}">
+						<items>
+							<StandardListItem selected="{select}" title="{name}" />
+						</items>
+					</List>
+				</IconTabFilter>
+
+		<IconTabFilter key="Sort" text="Sort">
+		<List id="idSortOrdListJLT" mode="SingleSelectLeft" headerText="Sort Order">
+						<items>
+							<StandardListItem selected="true" title="Ascending" />
+							<StandardListItem  title="Descending" />
+						</items>
+					</List>
+
+		<List id="idSortByListJLT" mode="SingleSelectLeft" headerText="Sort By" >
+						<items>
+							<StandardListItem selected="true" title="JOB ID" />
+							<StandardListItem  title="JOB NAME" />
+							<StandardListItem  title="SCH START TIME" />
+							<StandardListItem  title="COMPLETED TIME STAMP" />
+							<StandardListItem  title="SCH END TIME" />
+							<StandardListItem  title="RUN STATUS" />
+							<StandardListItem  title="RUN STATE" />
+							<StandardListItem  title="SCHEDULE NEXT RUN" />
+							<StandardListItem  title="RUN TEXT" />
+						</items>
+					</List>			
+		
+		</IconTabFilter>		
+			</items>
+		</IconTabBar>
+    </content>
+	
+        <beginButton>
+
+        <Button  id="btn" text="Ok" type="Emphasized" press="onOk"></Button>
+
+        </beginButton>
+
+        <endButton>
+
+        <Button text="Cancel"  press="onCancel"></Button>
+
+        </endButton>
+        
+        
+			</Dialog>
+
+</core:FragmentDefinition>

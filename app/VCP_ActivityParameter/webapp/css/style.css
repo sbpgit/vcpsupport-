@@ -1,0 +1,41 @@
+/* Enter your custom styles here */
+
+
+.Text{
+    font-size:1.25rem;
+    padding-top:0.3rem;
+    padding-right:0.2rem;
+    color: #0a6ed1;
+}
+.sapMPopover {
+    position: absolute;
+    color: #32363a;
+    min-width: 6.25rem;
+    box-sizing: border-box;
+    outline: none;
+    width: 25%;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    border: none;
+    box-shadow: 0 0 0 0.0625rem rgb(0 0 0 / 42%), 0 0.625rem 1.875rem 0 rgb(0 0 0 / 30%);
+    border-radius: 0.25rem;
+    min-height: 2rem;
+}
+.sapMPopoverHeader .sapMBarMiddle>.sapMBarPH {
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
+* {
+    scrollbar-width: thin;
+    /*"auto"or "thin"*/
+    scrollbar-color: #888 #f1f1f1;
+    /*thumb and track color*/
+}
+#idpar1AP-tblHeader {
+    position: sticky;
+    top: 70px;
+    z-index: 10;
+}
+
+

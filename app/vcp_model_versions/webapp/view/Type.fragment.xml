@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog contentHeight="50%"
+		id="oTypeMV"
+		title="oBject Type"
+		items="{/aItems}"
+		selectionChange="RequireProduct"
+		liveChange=".handleSearch"
+		confirm=".onTypeSelect"
+		cancel=".onTypeSelect">
+		<StandardListItem
+			title="{OBJ_TYPE}"
+			 />
+	</SelectDialog>
+</core:FragmentDefinition>

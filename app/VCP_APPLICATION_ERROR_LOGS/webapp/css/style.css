@@ -1,0 +1,47 @@
+/* Make the ObjectPageLayout take full height */
+.sapUxAPObjectPageLayout {
+    height: 100% !important;
+}
+
+/* Remove any overflow restrictions from ObjectPage sections */
+.sapUxAPObjectPageSection,
+.sapUxAPObjectPageSubSection {
+    overflow: visible !important;
+}
+
+/* Make the ScrollContainer the ONLY scrolling area */
+.TableScrollOnly {
+    height: 70vh !important;
+    overflow-y: auto !important;
+    border: 1px solid #d9d9d9 !important; /* Add border to see the container */
+}
+
+/* Table should take full available space */
+#idLogTable {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Ensure table container is visible */
+#idLogTable .sapUiTableCnt {
+    height: 100% !important;
+    border: 1px solid blue !important; /* Temporary to debug */
+}
+
+/* Make table rows scrollable */
+#idLogTable .sapUiTableCtrlScr {
+    overflow-y: auto !important;
+    height: 100% !important;
+}
+
+/* Dynamic row height styling */
+.DynamicRowHeight .sapUiTableRow {
+    height: auto !important;
+    min-height: 3rem !important;
+}
+
+.DynamicRowHeight .sapUiTableCell {
+    height: auto !important;
+    white-space: normal !important;
+    padding: 0.5rem !important;
+}

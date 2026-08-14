@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+   <Dialog
+    id="idMessageDialogREL"
+    title="Full Message"
+    stretchOnPhone="true"
+    draggable="true"
+    resizable="true"
+    contentWidth="50%"
+   >
+    <content>
+        <VBox class="myDialogContent">
+            <Text id="idMessageTextREL" wrapping="true" />
+        </VBox>
+    </content>
+    <endButton>
+        <Button text="Close" press="onCloseMessageDialog" />
+    </endButton>
+</Dialog>
+
+</core:FragmentDefinition>

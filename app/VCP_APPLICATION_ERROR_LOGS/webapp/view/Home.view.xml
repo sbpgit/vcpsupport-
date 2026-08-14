@@ -1,0 +1,177 @@
+<mvc:View
+    controllerName="vcpapp.runtimeerrorlogs.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:table="sap.ui.table"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:ux="sap.uxap"
+    xmlns:l="sap.ui.layout">
+    <ux:ObjectPageLayout
+        height="100%"
+        enableLazyLoading="false"
+        useIconTabBar="false"
+        showFooter="false"
+        headerContentPinned="true">
+        <ux:headerContent>
+            <l:VerticalLayout class="sapUiMediumMarginEnd">
+                <Label
+                    text="From Date"
+                    required="true"/>
+                <DatePicker
+                    id="idValidFromREL"
+                    displayFormat="yyyy/MM/dd"
+                    valueFormat="yyyy-MM-dd"/>
+            </l:VerticalLayout>
+            <l:VerticalLayout class="sapUiMediumMarginEnd">
+                <Label
+                    text="To Date"
+                    required="true"/>
+                <DatePicker
+                    id="idValidToREL"
+                    displayFormat="yyyy/MM/dd"
+                    valueFormat="yyyy-MM-dd"/>
+            </l:VerticalLayout>
+            <l:VerticalLayout class="sapUiMediumMarginEnd">
+                <Label text="Log Type" />
+                <Select
+                    id="idTypeREL"
+                    change="onFilterChange">
+                    <items>
+                        <core:Item
+                            key="All"
+                            text="All"/>
+                        <core:Item
+                            key="CODE"
+                            text="CODE"/>
+                        <core:Item
+                            key="QUERY"
+                            text="QUERY"/>
+                    </items>
+                </Select>
+            </l:VerticalLayout>
+            <l:VerticalLayout class="sapUiMediumMarginEnd">
+                <Label text="" />
+                <l:HorizontalLayout>
+                    <Button
+                        id="idGoREL"
+                        text="Go"
+                        type="Emphasized"
+                        press="onGetData"
+                        class="sapUiTinyMarginEnd"/>
+                    <Button
+                        id="idClearREL"
+                        text="Reset"
+                        type="Emphasized"
+                        press="onReset"
+                        class="sapUiTinyMarginEnd"/>
+                    <Button
+                        id="idDownloadREL"
+                        text="Download"
+                        type="Emphasized"
+                        press="onDownload"/>
+                </l:HorizontalLayout>
+            </l:VerticalLayout>
+        </ux:headerContent>
+        <ux:sections>
+            <ux:ObjectPageSection
+                title=""
+                showTitle="false">
+                <ux:subSections>
+                    <ux:ObjectPageSubSection>
+                        <ux:blocks>
+                            <ScrollContainer
+                                width="100%"
+                                horizontal="false"
+                                vertical="true"
+                                focusable="false"
+                                class="TableScrollOnly">
+                                <table:Table
+                                    id="idLogTable"
+                                    width="100%"
+                                    class="DynamicRowHeight"
+                                    selectionMode="None"
+                                    visibleRowCountMode="Auto"
+                                    enableColumnReordering="true"
+                                    minAutoRowCount="17"
+                                    rows="{ path: '/Logs', sorter:{path:'LOG_TIME', descending:true} }">
+                                    <table:columns>
+                                        <table:Column
+                                            filterProperty="LOG_TIME"
+                                            sortProperty="LOG_TIME"
+                                            width="13rem">
+                                            <table:label>
+                                                <Label text="Log Time" />
+                                            </table:label>
+                                            <table:template>
+                                                <Text
+                                                    text="{path:'LOG_TIME', formatter:'.toUtcISOString'}"/>
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column
+                                            filterProperty="LOG_DATE"
+                                            sortProperty="LOG_DATE"
+                                            width="8rem">
+                                            <table:label>
+                                                <Label text="Log Date" />
+                                            </table:label>
+                                            <table:template>
+                                                <Text
+                                                    text="{
+                            path:'LOG_DATE',
+                            type:'sap.ui.model.type.Date',
+                            formatOptions:{ pattern:'yyyy-MM-dd' }
+                        }"/>
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column
+                                            filterProperty="SERVICE"
+                                            sortProperty="SERVICE"
+                                            width="10rem">
+                                            <table:label>
+                                                <Label text="Service Name" />
+                                            </table:label>
+                                            <table:template>
+                                                <Text text="{SERVICE}" />
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column
+                                            filterProperty="MESSAGE"
+                                            sortProperty="MESSAGE"
+                                            width="45rem">
+                                            <table:label>
+                                                <Label text="Message" />
+                                            </table:label>
+                                            <table:template>
+                                                <VBox>
+                                                    <Text
+                                                        text="{MESSAGE}"
+                                                        wrapping="true"
+                                                        maxLines="4"/>
+                                                    <Link
+                                                        text="More Info"
+                                                        visible="{= ${MESSAGE} ? ${MESSAGE}.length > 300 : false }"
+                                                        press=".onShowMessageDetails"/>
+                                                </VBox>
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column
+                                            filterProperty="TYPE"
+                                            sortProperty="TYPE"
+                                            width="8rem">
+                                            <table:label>
+                                                <Label text="Log Type" />
+                                            </table:label>
+                                            <table:template>
+                                                <Text text="{TYPE}" />
+                                            </table:template>
+                                        </table:Column>
+                                    </table:columns>
+                                </table:Table>
+                            </ScrollContainer>
+                        </ux:blocks>
+                    </ux:ObjectPageSubSection>
+                </ux:subSections>
+            </ux:ObjectPageSection>
+        </ux:sections>
+    </ux:ObjectPageLayout>
+</mvc:View>

@@ -1,0 +1,166 @@
+<mvc:View controllerName="vcpapp.vcptimeseriesfuturev2.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:ux="sap.uxap"
+    xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified">
+    <Page showHeader="false">
+    <content>
+
+    
+       <ux:ObjectPageLayout id="ObjectPageLayoutTSF" headerContentPinned="true">
+       
+        <ux:headerTitle >
+            <ux:ObjectPageDynamicHeaderTitle >
+                <ux:expandedHeading >
+                   
+                </ux:expandedHeading>
+                <ux:snappedHeading>
+                  
+						<Title id="_IDGenTitle2TSF" text=""/>
+                           
+                    
+                </ux:snappedHeading>
+                 <ux:navigationActions>
+                            <Button  icon="sap-icon://sys-help" id="idNav3TSH" press="onNavPress" type="Emphasized" tooltip="Help Document" />
+                        </ux:navigationActions>
+            </ux:ObjectPageDynamicHeaderTitle>
+        </ux:headerTitle>
+        <ux:headerContent>
+                <l:VerticalLayout class="sapUiTinyMarginEnd">
+                <Label text=""/>
+                <SearchField id="headSearchTSH"  search="handleSearch" width="250px" liveChange="oHomesearch"  placeholder="Characterstic Num" />
+                </l:VerticalLayout >
+
+                <l:VerticalLayout >
+                <Label text="Demand Location" />
+                <MultiInput id="idlocTSF" class="sapUiTinyMarginEnd"  width="250px" placeholder="Demand Location" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                </l:VerticalLayout >
+
+                <l:VerticalLayout >
+                <Label text="Product"/>
+                <MultiInput id="prodInputTSF" class="sapUiTinyMarginEnd"  width="250px" placeholder="Product"  showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+                </l:VerticalLayout >
+
+                <l:VerticalLayout >
+                <Label text="IBP Version"  />
+                <MultiInput id="idverTSF" class="sapUiTinyMarginEnd" width="250px" placeholder="Version" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                </l:VerticalLayout >
+                <l:VerticalLayout >
+                <Label text="IBP Scenario" />
+                <MultiInput id="idscenTSF" class="sapUiTinyMarginEnd"  width="250px" placeholder="Scenario" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                 </l:VerticalLayout >
+                 <l:VerticalLayout >
+                <Label text=""/>        
+                <Button text="Go" class="sapUiTinyMarginEnd" type="Emphasized" press="onGetData" tooltip="Get data based on filters" />
+                </l:VerticalLayout >
+                <l:VerticalLayout >
+                 <Label text=""/>            
+                <Button text="Reset" type="Transparent" press="onResetData" tooltip="Reset" />
+                </l:VerticalLayout >
+            
+        </ux:headerContent>
+        
+           <!-- <ux:sections> -->
+            <ux:ObjectPageSection showTitle="false">
+                <ux:subSections>
+                    <ux:ObjectPageSubSection>
+                       
+                            <Table id="orderListTSF" growing="true"  growingDirection="Downwards" growingThreshold="100" 
+                              updateFinished="onTableUpdate" items="{path: '/'}"  itemPress="onhandlePress"  
+                              mode="SingleSelectMaster"   selectionChange="onhandlePress" rememberSelections="false" sticky="ColumnHeaders,HeaderToolbar">
+                            <!-- <headerToolbar>
+                            <OverflowToolbar>
+               <Button id="idDownload" icon="sap-icon://arrow-bottom" text="Download" press="downloadData" type="Emphasized" /> 
+				<ToolbarSpacer/>
+				</OverflowToolbar>
+                            </headerToolbar> -->
+                                <columns>
+                                    <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                        <Text text="Date" />
+                                    </Column>
+                                    <Column hAlign="Left" width="12%" vAlign="Middle" >
+                                        <Text text="{i18n>Loc}" />
+                                    </Column>
+                                    <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                        <Text text="{i18n>Prod}" />
+                                    </Column>
+
+                                    <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                        <Text text="{i18n>objty}" />
+                                    </Column>
+                                    <Column hAlign="Left" width="17%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                        <Text text="{i18n>chardesc}" />
+                                    </Column>
+                                      <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                        <Text text="{i18n>scss}" />
+                                    </Column>
+                                    <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                        <Text text="{i18n>scstr}" />
+                                    </Column>
+                                    <Column hAlign="Left" width="15%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                        <Text text="{i18n>charnum}" />
+                                    </Column>
+                                      <Column hAlign="Left" width="8%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                        <Text text="{i18n>objcount}" />
+                                    </Column>
+                                     <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                        <Text text="{i18n>rowid}" />
+                                    </Column>
+                                     <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                        <Text text="{i18n>objdep}" />
+                                    </Column>
+                                
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{CAL_DATE}" />
+                                            <Text text= "{LOCATION_ID}" />
+                                            <Text text= "{PRODUCT_ID}" />
+                                            <Text text= "{OBJ_TYPE}" />
+                                             <ObjectIdentifier title="{CHAR_DESC}" text= "{CHARVAL_DESC}" />
+                                            <Text text= "{SUCCESS}" />
+                                            <Text text= "{SUCCESS_RATE}" />
+                                            <Text text= "{CHAR_NUM}" />
+                                            <Text text= "{OBJ_COUNTER}" />
+                                            <Text text= "{ROW_ID}" />
+                                            <Link id="btnEdit"  text="{OBJ_DEP}" press="edit"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                         
+                       
+                    </ux:ObjectPageSubSection>              
+                </ux:subSections>
+            </ux:ObjectPageSection>    
+   
+     </ux:ObjectPageLayout>
+                  </content>
+
+                       
+        <!-- </ux:sections> -->
+          <!-- <ux:footer>                 
+				<OverflowToolbar>
+               <Button id="idDownload" icon="sap-icon://arrow-bottom" text="Download" press="downloadData" type="Emphasized" /> 
+				<ToolbarSpacer/>
+				</OverflowToolbar>
+		   </ux:footer> -->
+
+        <footer>
+           <OverflowToolbar id="_IDGenOverflowToolbar1" >
+           <ToolbarSpacer />
+           <Button id="idDownload" icon="sap-icon://arrow-bottom" text="Download" press="downloadData" type="Emphasized" />
+         </OverflowToolbar>
+       </footer>
+
+        </Page>
+</mvc:View>
+
+

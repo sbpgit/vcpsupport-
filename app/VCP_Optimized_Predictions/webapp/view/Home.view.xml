@@ -1,0 +1,33 @@
+<mvc:View xmlns:smarttable="sap.ui.comp.smarttable"
+    xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+    xmlns:smartvariants="sap.ui.comp.smartvariants"
+    xmlns:f="sap.f" controllerName="vcpapp.vcpoptimizedpredictions.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <f:DynamicPage id="dynamicPageOP">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <smartvariants:SmartVariantManagement id="PageVariantOP" persistencyKey="PageVariant"></smartvariants:SmartVariantManagement>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader>
+                <smartfilterbar:SmartFilterBar id="smartFilterBarOP" entitySet="getOptimizedPred" showClearOnFB="true" smartVariant="PageVariant" useToolbar="false" showFilterConfiguration="true" persistencyKey="PKeyFilterBar" liveMode="true">
+                    <smartfilterbar:controlConfiguration>
+                        <smartfilterbar:ControlConfiguration label="{i18n>location}" key="LOCATION_ID" visibleInAdvancedArea="true" mandatory="auto" controlType="dropDownList"></smartfilterbar:ControlConfiguration>
+                        <smartfilterbar:ControlConfiguration label="{i18n>product}" key="PRODUCT_ID" visibleInAdvancedArea="true" mandatory="auto" controlType="dropDownList"></smartfilterbar:ControlConfiguration>
+                        <smartfilterbar:ControlConfiguration label="{i18n>modver}" key="MODEL_VERSION" visibleInAdvancedArea="true" mandatory="auto" controlType="dropDownList"></smartfilterbar:ControlConfiguration>
+                        <smartfilterbar:ControlConfiguration label="{i18n>ver}" key="VERSION" visibleInAdvancedArea="true" mandatory="auto" controlType="dropDownList"></smartfilterbar:ControlConfiguration>
+                        <smartfilterbar:ControlConfiguration label="{i18n>scen}" key="SCENARIO" visibleInAdvancedArea="true" mandatory="auto" controlType="dropDownList"></smartfilterbar:ControlConfiguration>
+                        <smartfilterbar:ControlConfiguration label="{i18n>alg}" key="ALGORITHM" visibleInAdvancedArea="true" mandatory="notMandatory" controlType="dropDownList"></smartfilterbar:ControlConfiguration>
+                    </smartfilterbar:controlConfiguration>
+                </smartfilterbar:SmartFilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <smarttable:SmartTable id="smartTable" entitySet="getOptimizedPred" enableAutoBinding="true" header="Items" showRowCount="true" smartVariant="PageVariant" smartFilterId="smartFilterBarOP" persistencyKey="PKeyTable"></smarttable:SmartTable>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

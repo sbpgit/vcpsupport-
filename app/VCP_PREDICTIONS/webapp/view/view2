@@ -1,0 +1,490 @@
+sap.ui.define([
+    "sap/ui/core/mvc/Controller"
+],
+    /**
+     * @param {typeof sap.ui.core.mvc.Controller} Controller
+     */
+    function (Controller) {
+        "use strict";
+        var that;
+        var aResult;
+        var Orders;
+        var cDArray = [];
+
+        return Controller.extend("vcpapp.vcppredictions.controller.Home", {
+            onInit: function () {
+                that = this;
+            //    that.byId("DRS1").setValue("5-10-2023")
+            //    that.byId("DRS2").setValue("5-12-2023")
+
+            },
+              onAfterRendering: function () {
+             
+                var oModel = that.getOwnerComponent().getModel('oDataModel');
+                oModel.read('/getPredictions', {
+                    success: function (aData) {
+                     //   debugger;
+                        aResult = aData.results
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                })
+            },
+            onClick:function(){
+                that.byId("S1").setValue("");
+                that.byId("oProd").setValue("");
+                that.byId("oVers").setValue("");
+                that.byId("oScen").setValue("");
+                that.byId("DRS1").setValue("");
+                that.byId("DRS2").setValue("");
+                that.byId("noFilter").setValue("NoData");
+                // that.byId("excelGrid").setValue("No Data")
+                // var aModel = new sap.ui.model.json.JSONModel();
+                // that.byId("excelGrid").setModel(aModel)
+                
+            },
+            onGo: function () {
+                
+                 var P1 = that.byId("oLoc").getValue();
+                 var P2 = that.byId("oProd").getValue();
+                 var P3 = that.byId("oVers").getValue();
+                 var P4 = that.byId("oScen").getValue();
+                 var D1 = that.byId("DRS1").getValue();
+                 var oD1 = D1.replaceAll("/", "-");
+                 var D2 = that.byId("DRS2").getValue();
+                 var oD2 = D2.replaceAll("/", "-");
+                // var o_Version = that.byId("Plant").getSelectedKey();
+                // if ((P1.length === 0) || (P2.length === 0)) {
+                //     sap.m.MessageToast.show("Please Select Location ");
+                // }
+                var Tst = []
+                var oAssemblyModel = that.getOwnerComponent().getModel('oDataModel');
+                oAssemblyModel.read('/getPredictions', {
+                    success: function (aData) {
+                        Orders = aData.results
+   
+                        var dateId1 = that.byId("DRS1").getDateValue()
+                        var DateId2 = that.byId("DRS2").getDateValue()
+        
+                         
+                        if (P1.length && P2.length > 0) {
+                            for (var j = 0; j < Orders.length; j++) {
+                                if (Orders[j].LOCATION_ID === P1 && Orders[j].PRODUCT_ID === P2 
+                                    && Orders[j].VERSION === P3 && Orders[j].SCENARIO === P4 ) {
+                                    if (Orders[j].CAL_DATE.toLocaleDateString().replaceAll("/","-") === oD1 && 
+                                     Orders[j].CAL_DATE.toLocaleDateString().replaceAll("/","-") === oD2) 
+                                   var oDate = new Date();
+                                    var dayOfWeek = 1;
+                                    if (dayOfWeek === 1) {
+                                        cDArray.push({
+                                            LOCATION_ID      : Orders[j].LOCATION_ID,
+                                            PRODUCT_ID       : Orders[j].PRODUCT_ID,
+                                            MODEL_PROFILE    :Orders[j].MODEL_PROFILE,
+                                            VERSION          : Orders[j].VERSION,
+                                            SCENARIO         : Orders[j].SCENARIO,
+                                            OBJ_COUNTER      : Orders[j].OBJ_COUNTER,
+                                            OBJ_DEP          : Orders[j].OBJ_DEP,
+                                            OBJ_TYPE         : Orders[j].OBJ_TYPE,
+                                            CAL_DATE: Orders[j].CAL_DATE.toLocaleDateString().replaceAll("/","-"), 
+                                            PREDICTED: Orders[j].PREDICTED
+                                        })
+                                    }
+                                    if (cDArray[0].PREDICTED === null) {
+                                        cDArray[0].PREDICTED = 0
+                                    }      
+                            }
+                            }
+                        }
+
+                        var dArray = []
+
+                        while (DateId2 > dateId1) {
+
+                            var newd1 = new Date(dateId1.setDate(dateId1.getDate() + 1))
+
+                            dArray.push(newd1);
+
+                        }
+                        dateId1.setDate(dateId1.getDate() - dArray.length);
+
+                        dArray.pop()
+
+                        dArray.splice(0, 0, dateId1)
+
+                        var afrm1 = []
+
+                        var Week = []
+
+                        for (var i = 0; i < dArray.length; i++) {
+
+                            if (dArray[i].toDateString().split(" ")[0] === "Mon") {
+
+                                afrm1.push(dArray[i])
+
+                                Week.push(dArray[i])
+
+                            }
+
+                        }
+
+                        for (var j = 0; j < afrm1.length; j++) {
+
+                            afrm1[j] = afrm1[j].toLocaleDateString("en-GB").split("/").join("-")
+
+                        }
+                        var oDta = [];
+                        var oDArray = []
+                        oDta = [" LOCATIONID ", " PRODUCT_ID ", " MODEL_PROFILE ", " OBJ_COUNTE R", " OBJ_DEP ", " OBJ_TYPE "]
+                        for (var i = 0; i < afrm1.length; i++) {
+                            oDArray.push(
+                                    afrm1[i]
+                                ) 
+                        }  
+                        for (var k = 0; k < oDArray.length; k++) {
+                            const dateComponents = oDArray[k].split('-');
+                            if (dateComponents.length !== 3) {
+                                return "Invalid date format";
+                            }
+                            // Extract day, month, and year
+                            const month = dateComponents[0];
+                            const day = dateComponents[1];
+                            const year = dateComponents[2];
+                            // Create a new date string in the dd-MM-yyyy format
+                            // if(month.length === 1){
+                            //     var outputDate = `${day}-0${month}-${year}`;
+                            // }else{
+                              var  outputDate = `${day}-${month}-${year}`;
+                           // }
+                            oDta.push(outputDate)
+
+                        }      
+                        for (var j = 0; j < cDArray.length; j++) {       
+                                  var o_Dts = cDArray[j].CAL_DATE
+                                //   var c = o_Dts.toLocaleDateString();
+                                //   var newd1 = c.replaceAll("/", "-")
+                                      var a = 0+o_Dts;
+                                       cDArray[j].CAL_DATE = a;
+                        }
+                                    
+                        var o_Arr = [];
+                        for (var r = 6; r < oDta.length; r++) {
+                            for (var i = 0; i < cDArray.length; i++) { 
+                                // var oCal_Date = 0+cDArray[i].CAL_DATE;         
+                                if (oDta[r] === cDArray[i].CAL_DATE) {         
+                                    o_Arr.push(cDArray[i])
+                                //     o_Arr[i].CAL_DATE = oCal_Date
+                                //    // o_Arr[i].CAL_DATE =  oDt;
+                                }
+                            }
+                        }
+
+                        var oExcel = [];
+                        var dt;
+                         for (var m = 6; m < oDta.length; m++) {
+                                for (var t = 0; t < o_Arr.length; t++) {
+                                    var obj = {};
+                                if (oDta[m] === o_Arr[t].CAL_DATE) {
+                                    dt = oDta[m];
+                                    obj.LOCATION_ID   = o_Arr[t].LOCATION_ID;
+                                    obj.PRODUCT_ID    = o_Arr[t].PRODUCT_ID;
+                                    obj.MODEL_PROFILE = o_Arr[t].MODEL_PROFILE;
+                                    obj.OBJ_COUNTER   = o_Arr[t].OBJ_COUNTER
+                                    obj.OBJ_DEP       = o_Arr[t].OBJ_DEP;
+                                    obj.OBJ_TYPE      = o_Arr[t].OBJ_TYPE;
+                                                                   
+                                     for(var i = 6; i < oDta.length; i++){                                  
+                                           obj[dt]= o_Arr[t].PREDICTED;
+                                    }
+                                    for(var d = 6; d<oDta.length; d++){
+                                        var okey =Object.keys(obj)
+                                          for(var e = 6; e<okey.length; e++){ 
+                                            if(oDta[d] === okey[e]){
+                                                obj[oDta[d]] = o_Arr[t].PREDICTED;
+                                            }
+                                            else if(obj[oDta[d]] === undefined) {
+                                                   obj[oDta[d]] = ""
+                                                  }
+                                        }
+                                     }
+                               
+                                    oExcel.push(obj);
+                               }
+                            }
+                        }
+                        var aggregatedData = {};
+                        var mergedObjects = [];
+                        for (var i = 0; i < oExcel.length; i++) {
+                            var obj = oExcel[i];
+                            var key = obj.LOCATION_ID + obj.PRODUCT_ID + obj.MODEL_PROFILE + obj.OBJ_COUNTER 
+                                      + obj.OBJ_DEP + obj.OBJ_TYPE + obj.PREDICTED;
+                            if (!aggregatedData[key]) {                             
+                                aggregatedData[key] = {
+                                    ...obj
+                                };
+                            }
+                            for (var date in obj) {
+                                if (date !== "LOCATION_ID" && date !== "PRODUCT_ID" && date !== "MODEL_PROFILE" && date !== "OBJ_COUNTER"
+                                   && date !== "OBJ_DEP"  && date !== "OBJ_TYPE") {
+                                    if (!aggregatedData[key][date]) {
+                                        aggregatedData[key][date] = 0;
+                                    }
+                                    if (obj[date] > 0) {
+                                        aggregatedData[key][date] = obj[date];
+                                    }
+                                }
+                            }
+                        }
+                        mergedObjects = Object.values(aggregatedData);
+
+
+                        // var oContain = [];
+                        // var obj = {};
+                        // for(var n=0; n < mergedObjects.length; n++){
+                        //     for( var j=0; j<Orders.length; j++){
+                        //         if( aResult[j].PRODUCT_ID !== mergedObjects[n].PRODUCT_ID){   
+                        //           const separatedStrings = mergedObjects[n].PRODUCT_ID.split(' '); // Split the input string by spaces
+                                
+                        //           mergedObjects[n].PRODUCT_ID = separatedStrings.join('\n');
+                        //         }
+                        //     }
+                        // }
+                        // var a_obj = Object.keys(mergedObjects[0])
+                        
+                                
+                        var excel = document.querySelector('[id*="excelGrid"]');
+                        const Excel = new Handsontable(excel, {
+                            colHeaders: oDta, 
+                            data: mergedObjects,
+                            rowHeaders: true,
+                            filters: true,
+                            // dropdownMenu: ['filter_by_condition', 'filter_by_value', 'filter_action_bar'],
+                            manualColumnMove: true,
+                            width: 'auto',
+                           height: '64vh',
+                            colWidths: 80,
+                            // stretchH: 'all',
+                            fixedColumnsLeft: 4,
+                            licenseKey: 'non-commercial-and-evaluation',
+                         // className: 'custom-column-2'
+                        //  cells: function (row, col, prop, value) {
+                        //     var cellProperties = {};
+                    
+                        //     if (col === 0) { // Adjust only the first column
+                        //       // Calculate cell height based on the value in the second column
+                        //       var height = 30 + (value * 5); // Adjust the 5 multiplier as needed
+                        //       cellProperties.renderer = function (instance, td, row, col, prop, value) {
+                        //         Handsontable.renderers.TextRenderer.apply(this, arguments);
+                        //         td.style.height = height + 'px';
+                        //       };
+                        //     }
+                    
+                        //     return cellProperties;
+                        // }
+
+                         });
+                        //  var info = document.querySelector('[id*="excelGrid"]');
+                        //  info.className = 'hide';
+                         
+                        //  Excel.addHook('afterFilter', function(){
+                        //  console.log(info, hot.countRows() < 1)
+                        //      if(Excel.countRows() < 1){
+                        //        info.className = 'show'
+                        //    } else {
+                        //        info.className = 'hide'
+                        //    }
+                        //  })
+                         
+                        function customRenderer(row, td) {
+                            Handsontable.renderers.TextRenderer.apply(that, arguments);
+                            td.style.backgroundColor = 'yellow';
+                          }
+                         // var children = document.getElementsByClassName('ht_nestingParent');
+                        //   Excel.updateSettings({
+                        //     cells: function (row, col, prop) {
+                        //       var cellProperties = {};    
+                        //     if (Excel.getDataAtRowProp(row, prop) === 10){
+                        //         cellProperties.readOnly= true;
+                        //         cellProperties.renderer = customRenderer
+                        //     }
+                        //     if(row === 2) {         
+                        //       cellProperties.editor = 'text';   
+                        //       cellProperties.renderer = customRenderer
+                        //       }
+                        //     else {
+                        //         cellProperties.readOnly= true;
+                        //       }
+                        //       return cellProperties;
+                        //     }
+                        //     })
+                        //     that.applyCellStyle();
+
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                })
+            },
+            onLocation: function (oEvent) {
+                if (!that.newLocDialog) {
+                    that.newLocDialog = sap.ui.xmlfragment("vcpapp.vcppredictions.view.Location", that);
+                }
+
+                        var Product = [];
+                        for (var p = 0; p < aResult.length; p++) {
+                            Product.push(aResult[p].LOCATION_ID);
+                        }
+                        var LOCATION_ID = new Set(Product);
+                        var jsonObject = [];
+                        jsonObject = Product.map(JSON.stringify);
+                        var uniqueSet = new Set(jsonObject);
+                        var uniqueArray = Array.from(uniqueSet).map(JSON.parse)
+
+                        var oLoc = []
+                        for (var u = 0; u < uniqueArray.length; u++) {
+                            var LOCATION_ID = {
+                                LOCATION_ID: uniqueArray[u]
+                            }
+                            oLoc.push(LOCATION_ID)
+                        }
+                        var oJSONModel = new sap.ui.model.json.JSONModel();
+                        oJSONModel.setData({
+                            aItems: oLoc
+                        })
+                        sap.ui.getCore().byId("oLocation").setModel(oJSONModel)
+                        that.newLocDialog.open();
+                
+
+            },
+            onLocationSelect: function (oEvent) {
+                var oSelectedItem = oEvent.getParameter("selectedItem");
+                if (!oSelectedItem) {
+                    return;
+                }
+                that.byId("oLoc").setValue(oSelectedItem.getTitle());
+                that.byId("oProd").setValue("");
+            },
+            onProduct: function (oEvent) {
+                if (that.byId("oLoc").getValue() === "") {
+                    sap.m.MessageToast.show("Please Select Location")
+                }
+                else {
+                    if (!that.newProdDialog) {
+                        that.newProdDialog = sap.ui.xmlfragment("vcpapp.vcppredictions.view.Product", that);
+                    }
+                   
+                    var TFilter = []
+                    var oTree = sap.ui.getCore().byId("oProduct")
+                   
+                            var sValue1 = that.byId("oLoc").getValue();
+                            for (var i = 0; i < aResult.length; i++) {
+                                if (aResult[i].LOCATION_ID === sValue1) {
+                                    TFilter.push({
+                                        PRODUCT_ID: aResult[i].PRODUCT_ID
+                                    })
+                                }
+                            }
+                            var jsonObject = [];
+                            jsonObject = TFilter.map(JSON.stringify);
+                            var uniqueSet = new Set(jsonObject);
+                            var uniqueArray = Array.from(uniqueSet).map(JSON.parse)
+                            var o_IbpModel = new sap.ui.model.json.JSONModel();
+                            o_IbpModel.setData({
+                                aItems: uniqueArray
+                            })
+                            oTree.setModel(o_IbpModel)  
+                            that.newProdDialog.open();  
+                } 
+            },
+            onProductSelect: function (oEvent) {
+                var oSelectedItem = oEvent.getParameter("selectedItem");
+                if (!oSelectedItem) {
+                    return;
+                }
+                that.byId("oProd").setValue(oSelectedItem.getTitle());
+           //     that.byId("oProd").setValue("");
+            },
+            onIBPVersion: function (oEvent) {
+                if (that.byId("oProd").getValue() === "") {
+                    sap.m.MessageToast.show("Please Select Product")
+                }
+                else {
+                    if (!that.newVersionDialog) {
+                        that.newVersionDialog = sap.ui.xmlfragment("vcpapp.vcppredictions.view.version", that);
+                    }
+                   
+                    var TFilter = []
+                    var oTree = sap.ui.getCore().byId("oVersion")
+                   
+                            var sValue1 = that.byId("oProd").getValue();
+                            for (var i = 0; i < aResult.length; i++) {
+                                if (aResult[i].PRODUCT_ID === sValue1) {
+                                    TFilter.push({
+                                        VERSION: aResult[i].VERSION
+                                    })
+                                }
+                            }
+                            var jsonObject = [];
+                            jsonObject = TFilter.map(JSON.stringify);
+                            var uniqueSet = new Set(jsonObject);
+                            var uniqueArray = Array.from(uniqueSet).map(JSON.parse)
+                            var o_IbpModel = new sap.ui.model.json.JSONModel();
+                            o_IbpModel.setData({
+                                aItems: uniqueArray
+                            })
+                            oTree.setModel(o_IbpModel)  
+                            that.newVersionDialog.open();  
+                } 
+            },
+            onVersionSelect: function (oEvent) {
+                var oSelectedItem = oEvent.getParameter("selectedItem");
+                if (!oSelectedItem) {
+                    return;
+                }
+                that.byId("oVers").setValue(oSelectedItem.getTitle());
+                that.byId("oScen").setValue("");
+            },
+            onIBPScenHelpRequest: function (oEvent) {
+                if (that.byId("oVers").getValue() === "") {
+                    sap.m.MessageToast.show("Please Select IBP Version")
+                }
+                else {
+                    if (!that.newScenarioDialog) {
+                        that.newScenarioDialog = sap.ui.xmlfragment("vcpapp.vcppredictions.view.Scenario", that);
+                    }
+                   
+                    var TFilter = []
+                    var oTree = sap.ui.getCore().byId("oScenario")
+                   
+                            var sValue1 = that.byId("oVers").getValue();
+                            for (var i = 0; i < aResult.length; i++) {
+                                if (aResult[i].VERSION === sValue1) {
+                                    TFilter.push({
+                                        SCENARIO: aResult[i].SCENARIO
+                                    })
+                                }
+                            }
+                            var jsonObject = [];
+                            jsonObject = TFilter.map(JSON.stringify);
+                            var uniqueSet = new Set(jsonObject);
+                            var uniqueArray = Array.from(uniqueSet).map(JSON.parse)
+                            var o_IbpModel = new sap.ui.model.json.JSONModel();
+                            o_IbpModel.setData({
+                                aItems: uniqueArray
+                            })
+                            oTree.setModel(o_IbpModel)  
+                            that.newScenarioDialog.open();  
+                } 
+            },
+            onScenarioSelect: function (oEvent) {
+                var oSelectedItem = oEvent.getParameter("selectedItem");
+                if (!oSelectedItem) {
+                    return;
+                }
+                that.byId("oScen").setValue(oSelectedItem.getTitle());
+             //   that.byId("oScen").setValue("");
+            }
+
+
+        });
+    });

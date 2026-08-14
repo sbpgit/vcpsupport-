@@ -1,0 +1,82 @@
+Enter your custom styles here
+/* Enter your custom styles here */
+
+/* .sapUxAPObjectPageContainerNoBar>.sapUxAPObjectPageSection:first-child:not(.sapUxAPObjectPageSectionNoTitle) {
+    margin-top: 0.1rem !important;
+} */
+/* .sapUiSizeCompact .sapUxAPObjectPageSectionHeader, .sapUxAPObjectPageSectionHeader {
+    height: 0.1rem !important;
+} */
+
+/* .sapUiSizeCompact .sapMSwt {
+    width: 5rem;
+    height: 1.625rem;
+} */
+/* .sapUxAPObjectPageHeaderDetails .sapMLabel {
+    color: #666;
+    width: 300px;
+} */
+/* .hdrBtnMargin{
+    margin-left:35rem;
+} */
+
+/* .hdrBtnMarginHdr{
+    margin-left:1rem;
+} */
+
+/* .sapFDynamicPageTitleMain>.sapFDynamicPageTitleMainInner .sapFDynamicPageTitleMainHeading .sapFDynamicPageTitleMainHeadingInner .sapMTitle {
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+} */
+
+
+/* .boldText{
+    margin-left:450px;
+} */
+/* .Text{
+    font-size:1.25rem;
+    padding-top:0.3rem;
+    padding-right:0.2rem;
+    color: #0a6ed1;
+} */
+/* .sapMPopover {
+    position: absolute;
+    color: #32363a;
+    min-width: 6.25rem;
+    box-sizing: border-box;
+    outline: none;
+    width: 25%;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    border: none;
+    box-shadow: 0 0 0 0.0625rem rgb(0 0 0 / 42%), 0 0.625rem 1.875rem 0 rgb(0 0 0 / 30%);
+    border-radius: 0.25rem;
+    min-height: 2rem;
+} */
+/* .sapMPopoverHeader .sapMBarMiddle>.sapMBarPH {
+    box-sizing: border-box;
+    justify-content: flex-start;
+} */
+
+/* .sapMIBar>.sapMBarLeft>.sapMBarChild:last-child, .sapMIBar .sapMBarPH>.sapMBarChild:last-child{
+    font-weight: normal !important;
+    padding-left: 0.75rem;
+    color:#32363a;
+} */
+*{
+
+    scrollbar-width: thin;
+
+    /*"auto"or "thin"*/
+
+    scrollbar-color: #888 #f1f1f1;
+
+    /*thumb and track color*/
+
+}
+
+/* .sapUxAPObjectPageWrapper {     overflow: hidden !important; } */
+ 
+ 
+

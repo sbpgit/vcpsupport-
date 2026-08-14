@@ -1,0 +1,49 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		id="myPopoverTSF"
+		title="My Views"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Bottom"
+		initialFocus="idSave1TSF">
+		<!-- <footer>
+			<OverflowToolbar >
+				<ToolbarSpacer />
+				<Button	id="idSave" text="Save" press="onSave" visible="false" />
+                <Button	id="idSaveAs" text="Save As" press="onVariantSave" type="Emphasized" />
+                <Button	id="idManage" text="Manage" press="onManageOpen" />
+			</OverflowToolbar>
+		</footer> -->
+		<!-- <IconTabBar
+		id="idIconTabBar"
+		select=".onFilterSelect"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter
+				text="Variants"
+				key="Variants" />
+			<IconTabSeparator />
+			<IconTabFilter
+				text="Favourites"
+				key="Favourites"  />
+					</items>
+		<content>
+		<VBox> -->
+		<List id="idMatListTSF"
+				items="{path: '/items1'}" mode="SingleSelectMaster" selectionChange="handleSelectPress" showSeparators="None"  >
+		<StandardListItem type="Active" 
+			title="{VARIANTNAME}"
+			/>
+	</List>
+	<OverflowToolbar >
+				<ToolbarSpacer />
+				<Button	id="idSaveTSF" text="Save" press="onSave" visible="false" />
+                <Button	id="idSaveAsTSF" text="Save As" press="onVariantSave" type="Emphasized" />
+                <Button	id="idManageTSF" text="Manage" press="onManageOpen" />
+			</OverflowToolbar>
+					<!-- </VBox>
+			</content>
+	</IconTabBar> -->
+	</Popover>
+</core:FragmentDefinition>

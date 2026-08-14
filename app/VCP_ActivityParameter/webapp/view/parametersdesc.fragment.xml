@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:plugins="sap.ui.table.plugins">
+    <Dialog id="paraDialogAP" title="Edit Parameter" contentWidth="40vw" contentHeight="auto" afterClose="closeBatchFragment">
+        <!-- <customHeader>
+            <Bar id="_IDGenBar1">
+                <contentLeft>
+                    <Title id="fragmentTitle" text="" />
+                </contentLeft>
+            </Bar>
+        </customHeader> -->
+              <f:SimpleForm id="createVariantAAP" visible="true" editable="true" layout="ResponsiveGridLayout" adjustLabelSpan="false" emptySpanL="6" columnsL="1">
+            <f:content>
+                <VBox id="_IDGenVBox5AP">
+                    <VBox id="_IDGenVBox1AP">
+                        <Label id="_IDGenLabel1AP" text="Parameter ID:" required="true" />
+                        <Input id="idParaAP" valueHelpOnly="false" showValueHelp="false" liveChange="handler.inpChange"  maxLength="50" placeholder="Length Cannot be more than 50 Characters"
+                        tooltip="Length Cannot be more than 50 Characters"/>
+                    </VBox>
+
+                    <VBox id="_IDGenVBox12AP">
+                        <Label id="_IDGenLabel12AP" text="Parameter Description:" required="true" />
+                        <MultiInput id="idParaDescAP" value="" valueHelpOnly="false" showValueHelp="false"  placeholder="Length Cannot be more than 150 Characters"
+                        tooltip="Length Cannot be more than 150 Characters" />
+                    </VBox>
+                </VBox>
+            </f:content>
+        </f:SimpleForm>
+        <buttons>
+            <Button id="idSaveBtn1AP" text="Save" press="saveParameter" type="Accept" />
+            <Button id="empClosebtnAP" text="Cancel" type="Reject" press="closeFragment" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

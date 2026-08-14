@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog contentHeight="50%"
+		id="oModelMV"
+		title="Model Version"
+		items="{/aItems}"
+		selectionChange="RequireProduct"
+		liveChange=".handleSearch"
+		confirm=".onModelSelect"
+		cancel=".onModelSelect">
+		<StandardListItem
+			title="{MODEL_VERSION}"
+			 />
+	</SelectDialog>
+</core:FragmentDefinition>

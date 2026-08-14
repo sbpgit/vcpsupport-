@@ -1,0 +1,185 @@
+/* Enter your custom styles here */
+
+/* Enter your custom styles here */
+
+/* Enter your custom styles here */
+/* .ongo{
+    margin-top:10px;
+} */
+/* button#__button1 { */
+    /* margin-top: -51px; */
+    /* margin-bottom: -50px; */
+    /* margin-left: 32px; */
+/* } */
+
+/* button#__button0 {
+    margin-top: 9px;
+} */
+/* .sapUiTinyMarginEnd{
+    margin-top:10px !important; 
+} */
+
+.hdrBtnMargin {
+    margin-left: 23rem;
+}
+
+.hdrBtnMarginHdr {
+    margin-left: 40rem;
+}
+
+.hdrBtnMarginHdr1 {
+    margin-left: 75rem;
+}
+
+/* .sapUiRespGridSpanXL3.sapUiRespGridSpanL4.sapUiRespGridSpanM6.sapUiRespGridSpanS12{
+    display: block;
+    position: absolute;
+    margin-left: 100%;
+    margin-top: 18px;
+} */
+/* .sapUiRespGridMedia-Std-LargeDesktop.sapUiRespGridHSpace1>.sapUiRespGridSpanXL3 {
+    /* width: 23.88888889%; */
+/* width: -webkit-calc(25% - 1rem); */
+/* width: calc(25% - 1rem); */
+
+
+/* .hbox1{
+    margin-right: 300px;
+} */
+
+.sapUxAPObjectPageContainerNoBar>.sapUxAPObjectPageSection:first-child:not(.sapUxAPObjectPageSectionNoTitle) {
+    margin-top: 0.1rem !important;
+}
+
+.sapUiSizeCompact .sapUxAPObjectPageSectionHeader,
+.sapUxAPObjectPageSectionHeader {
+    height: 0.1rem !important;
+}
+
+.sapFDynamicPageTitleMain>.sapFDynamicPageTitleMainInner .sapFDynamicPageTitleMainHeading .sapFDynamicPageTitleMainHeadingInner .sapMTitle {
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+/*PopOver*/
+.sapMIBar-CTX .sapMTitle {
+    color: brown;
+    text-shadow: none;
+    font-weight: bold;
+    font-family: '72';
+    padding: 5px;
+}
+
+.pop {
+    color: black;
+    font-size: 16px;
+    font-family: 'SAP-icons';
+    font-weight: normal;
+    display: inline-block;
+    white-space: normal;
+    cursor: text;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.boldText {
+    margin-left: 450px;
+}
+
+.Text {
+    font-size: 1.25rem;
+    padding-top: 0.3rem;
+    padding-right: 0.2rem;
+    color: #0a6ed1;
+}
+
+.sapMPopover {
+    position: absolute;
+    color: #32363a;
+    min-width: 6.25rem;
+    box-sizing: border-box;
+    outline: none;
+    width: 25%;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    border: none;
+    box-shadow: 0 0 0 0.0625rem rgb(0 0 0 / 42%), 0 0.625rem 1.875rem 0 rgb(0 0 0 / 30%);
+    border-radius: 0.25rem;
+    min-height: 2rem;
+}
+
+.sapMPopoverHeader .sapMBarMiddle>.sapMBarPH {
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
+
+.sapMIBar>.sapMBarLeft>.sapMBarChild:last-child,
+.sapMIBar .sapMBarPH>.sapMBarChild:last-child {
+    font-weight: normal !important;
+    padding-left: 0.75rem;
+    color: #32363a;
+}
+
+.sapUiSizeCompact .sapMSLI {
+    height: 3rem;
+}
+
+.sapMSLITitle,
+.sapMSLITitleOnly {
+    font-family: "72", "72full", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 1rem;
+    color: #1d2d3e;
+}
+
+.hom {
+    padding-left: 25px;
+    width: 280px;
+}
+
+.hom1 {
+
+    margin-left: 17px;
+    margin-top: 20px;
+    padding-left: 25px;
+}
+
+.hbox1{
+    margin-right: 20px !important;
+    /* Adjust as needed */
+}
+
+.hbox1 .sapMVBox:last-child {
+    margin-right: 0;
+    /* Remove margin for the last item */
+}
+
+/* .sapMColumnHeader{
+    justify-content: space-around;
+} */
+
+/* .sapMText.sapUiSelectable.sapMTextBreakWord.sapMTextMaxWidth.sapMColumnHeaderContent{
+    width: 150px;
+    height: 40px;
+
+    
+} */
+
+.sapMITBContent {
+    padding: 0rem;
+    position: relative;
+    background-color: #f5f6f7;
+}
+
+.sapUxAPObjectPageSection .sapUxAPObjectPageSectionContainer .sapUxAPObjectPageSubSection .sapUxAPBlockContainer {
+    padding-bottom: 0 !important;
+    padding-top: 0.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    background: #fff;
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+    border-radius: 0rem !important;
+}

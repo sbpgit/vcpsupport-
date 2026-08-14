@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog contentHeight="50%"
+	id="LocSlctListMV" 
+	title="Manufacturing Location" 
+	rememberSelections="true" 
+	search="handleSearch" 
+	liveChange="handleSearch"
+	confirm="onLocationSelect" 
+	cancel="handleClose" 
+	items="{/aItems}" 
+        selectionChange="handleProdChange"  >
+		<StandardListItem title="{LOCATION_ID}" />
+	</SelectDialog>
+</core:FragmentDefinition>

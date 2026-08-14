@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="JobsService" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="jobs" EntityType="JobsService.jobs"/>
+                <EntitySet Name="schedules" EntityType="JobsService.schedules"/>
+                <EntitySet Name="logs" EntityType="JobsService.logs"/>
+                <EntitySet Name="getJobStatus" EntityType="JobsService.getJobStatus"/>
+                <EntitySet Name="getJobRunStatus" EntityType="JobsService.getJobRunStatus"/>
+                <EntitySet Name="getJobRunState" EntityType="JobsService.getJobRunState"/>
+                <FunctionImport Name="updateJobs" m:HttpMethod="POST"/>
+                <FunctionImport Name="purgeJobLogs" ReturnType="Edm.String" m:HttpMethod="POST"/>
+                <FunctionImport Name="fUpdateJobs" ReturnType="Edm.String" m:HttpMethod="GET"/>
+                <FunctionImport Name="fpurgeJobLogs" ReturnType="Edm.String" m:HttpMethod="GET"/>
+                <FunctionImport Name="purgeJobLogsNew" ReturnType="Edm.String" m:HttpMethod="POST"/>
+                <FunctionImport Name="lreadJobs" ReturnType="Edm.String" m:HttpMethod="GET"/>
+                <FunctionImport Name="lreadJobDetails" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="displaySchedules" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="lreadJobSchedules" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="lreadJobSchedule" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="scheduleId" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="displayLogs" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="lreadJobActionLogs" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="lreadJobRunLogs" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="scheduleId" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="page_size" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="offset" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="laddMLJob" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobDetails" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="laddIBPBTPJob" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobDetails" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="lupdateJob" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobDetails" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ldeleteJob" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="laddJobSchedule" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="schedule" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ldeleteMLJobSchedule" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="scheduleDetails" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="lupdateMLJobSchedule" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="schedule" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="readJobs" ReturnType="Collection(JobsService.js_Jobs)" m:HttpMethod="GET"/>
+                <FunctionImport Name="readJobDetails" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="displaySchedules" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="readJobSchedules" ReturnType="Collection(JobsService.js_Schedules)" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="readJobSchedule" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="scheduleId" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="displayLogs" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="readJobActionLogs" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="readJobRunLogs" ReturnType="Collection(JobsService.js_RunLogs)" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="scheduleId" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="page_size" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="offset" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="addMLJob" ReturnType="Edm.Int32" m:HttpMethod="GET">
+                    <Parameter Name="jobDetails" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="updateMLJob" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobDetails" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="deleteMLJob" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="addJobSchedule" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="schedule" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="deleteMLJobSchedule" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="scheduleDetails" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="updateMLJobSchedule" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="schedule" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="createJob" ReturnType="Edm.Int32" m:HttpMethod="POST">
+                    <Parameter Name="url" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="cron" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="createMLJob" ReturnType="Edm.Int32" m:HttpMethod="POST">
+                    <Parameter Name="jobDetails" Type="JobsService.js_mlJobs" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="updateJob" ReturnType="Edm.String" m:HttpMethod="POST">
+                    <Parameter Name="jobDetails" Type="JobsService.js_Jobs" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="deleteJob" ReturnType="Edm.String" m:HttpMethod="POST">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="createJobSchedule" ReturnType="Edm.String" m:HttpMethod="POST">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="jobSchedule" Type="JobsService.js_mlSchedules" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="deleteJobSchedule" ReturnType="Edm.String" m:HttpMethod="POST">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="scheduleId" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="updateJobSchedule" ReturnType="Edm.String" m:HttpMethod="POST">
+                    <Parameter Name="jobId" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="scheduleId" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="jobSchedule" Type="JobsService.js_mlSchedules" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="addSeedOrderJob" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobDetails" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="insertJobData" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="Flag" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="Sequence" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="jobData" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="jobCreation" m:HttpMethod="POST">
+                    <Parameter Name="JOBDATA" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ParalleljobCreation" m:HttpMethod="POST">
+                    <Parameter Name="JOBDATA" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="SyncTemplates" m:HttpMethod="POST">
+                    <Parameter Name="JOBDATA" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="addJobCreation" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="jobDetails" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="updateJobSchedules" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="SEQUENCE_ID" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="JOB_ID" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="updateJobDetails" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="ACTIVE" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                    <Parameter Name="JOB_ID" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="deleteJobs" ReturnType="Edm.String" m:HttpMethod="GET">
+                    <Parameter Name="JOB_ID" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="resumeJobs" m:HttpMethod="POST">
+                    <Parameter Name="SEQUENCE_ID" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="JOB_ID" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="STEP" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="resumeParallelJobs" m:HttpMethod="POST">
+                    <Parameter Name="SEQUENCE_ID" Type="Edm.String" Mode="In" Nullable="true"/>
+                    <Parameter Name="JOB_ID" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                    <Parameter Name="STEP" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="modifyTablesData" m:HttpMethod="POST"/>
+            </EntityContainer>
+            <EntityType Name="jobs">
+                <Key>
+                    <PropertyRef Name="JOB_ID"/>
+                    <PropertyRef Name="JOB_NAME"/>
+                    <PropertyRef Name="ACTION"/>
+                    <PropertyRef Name="ACTIVE"/>
+                    <PropertyRef Name="HTTP_METHOD"/>
+                    <PropertyRef Name="CREATAT"/>
+                    <PropertyRef Name="SCHEDULE_ID"/>
+                </Key>
+                <Property Name="JOB_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="JOB_NAME" Type="Edm.String" MaxLength="200" Nullable="false"/>
+                <Property Name="ACTION" Type="Edm.String" MaxLength="200" Nullable="false"/>
+                <Property Name="ACTIVE" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="HTTP_METHOD" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="CREATAT" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="JOB_DES" Type="Edm.String" MaxLength="500"/>
+                <Property Name="JOB_TYPE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="START_TIME" Type="Edm.String" MaxLength="50"/>
+                <Property Name="END_TIME" Type="Edm.String" MaxLength="50"/>
+                <Property Name="ACTIVECOUNT" Type="Edm.Int32"/>
+                <Property Name="INACTIVECOUNT" Type="Edm.Int32"/>
+                <Property Name="SIGNATURE_VERSION" Type="Edm.Int32"/>
+                <Property Name="SUB_DOMAIN" Type="Edm.String"/>
+                <Property Name="USER" Type="Edm.String" MaxLength="50"/>
+                <Property Name="SCHEDULE_ID" Type="Edm.String" MaxLength="50" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="schedules">
+                <Key>
+                    <PropertyRef Name="SCHEDULE_ID"/>
+                    <PropertyRef Name="RUN_ID"/>
+                </Key>
+                <Property Name="SCHEDULE_ID" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="SCH_DESC" Type="Edm.String" MaxLength="100"/>
+                <Property Name="SCH_DATA" Type="Edm.String"/>
+                <Property Name="SCH_TYPE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="SCH_ACTIVE" Type="Edm.Boolean"/>
+                <Property Name="SCH_STARTTIME" Type="Edm.String" MaxLength="50"/>
+                <Property Name="SCH_END_TIME" Type="Edm.String" MaxLength="50"/>
+                <Property Name="SCH_TIME" Type="Edm.String" MaxLength="50"/>
+                <Property Name="SCH_NEXTRUN" Type="Edm.String" MaxLength="50"/>
+                <Property Name="RUN_ID" Type="Edm.String" MaxLength="50" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="logs">
+                <Key>
+                    <PropertyRef Name="RUN_ID"/>
+                </Key>
+                <Property Name="RUN_ID" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="HTTP_STATUS" Type="Edm.Int32"/>
+                <Property Name="EXECUTION_TIMESTAMP" Type="Edm.String" MaxLength="50"/>
+                <Property Name="RUN_STATUS" Type="Edm.String" MaxLength="50"/>
+                <Property Name="RUN_STATE" Type="Edm.String" MaxLength="50"/>
+                <Property Name="STATUS_MESSAGE" Type="Edm.String"/>
+                <Property Name="SCHEDULED_TIMESTAMP" Type="Edm.String" MaxLength="50"/>
+                <Property Name="COMPLETED_TIMESTAMP" Type="Edm.String" MaxLength="50"/>
+                <Property Name="runtext" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="getJobStatus">
+                <Key>
+                    <PropertyRef Name="JOB_ID"/>
+                    <PropertyRef Name="JOB_NAME"/>
+                    <PropertyRef Name="ACTION"/>
+                    <PropertyRef Name="JOB_DES"/>
+                    <PropertyRef Name="SCH_STARTTIME"/>
+                    <PropertyRef Name="SCH_END_TIME"/>
+                    <PropertyRef Name="SCH_TIME"/>
+                    <PropertyRef Name="SCH_NEXTRUN"/>
+                    <PropertyRef Name="RUN_ID"/>
+                    <PropertyRef Name="RUN_STATUS"/>
+                    <PropertyRef Name="CRITICALSTATUS"/>
+                    <PropertyRef Name="RUN_STATE"/>
+                    <PropertyRef Name="CRITICALSTATE"/>
+                    <PropertyRef Name="STATUS_MESSAGE"/>
+                    <PropertyRef Name="SCHEDULED_TIMESTAMP"/>
+                    <PropertyRef Name="COMPLETED_TIMESTAMP"/>
+                    <PropertyRef Name="RUNTEXT"/>
+                </Key>
+                <Property Name="JOB_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="JOB_NAME" Type="Edm.String" MaxLength="200" Nullable="false"/>
+                <Property Name="ACTION" Type="Edm.String" MaxLength="200" Nullable="false"/>
+                <Property Name="JOB_DES" Type="Edm.String" MaxLength="500" Nullable="false"/>
+                <Property Name="SCH_STARTTIME" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="SCH_END_TIME" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="SCH_TIME" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="SCH_NEXTRUN" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="RUN_ID" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="RUN_STATUS" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="CRITICALSTATUS" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="RUN_STATE" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="CRITICALSTATE" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="STATUS_MESSAGE" Type="Edm.String" MaxLength="5000" Nullable="false"/>
+                <Property Name="SCHEDULED_TIMESTAMP" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="COMPLETED_TIMESTAMP" Type="Edm.String" MaxLength="50" Nullable="false"/>
+                <Property Name="RUNTEXT" Type="Edm.String" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="getJobRunStatus">
+                <Key>
+                    <PropertyRef Name="RUN_STATUS"/>
+                </Key>
+                <Property Name="RUN_STATUS" Type="Edm.String" MaxLength="9" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="getJobRunState">
+                <Key>
+                    <PropertyRef Name="RUN_STATE"/>
+                </Key>
+                <Property Name="RUN_STATE" Type="Edm.String" MaxLength="17" Nullable="false"/>
+            </EntityType>
+            <ComplexType Name="js_Jobs">
+                <Property Name="name" Type="Edm.String"/>
+                <Property Name="description" Type="Edm.String"/>
+                <Property Name="action" Type="Edm.String"/>
+                <Property Name="active" Type="Edm.Boolean"/>
+                <Property Name="httpMethod" Type="Edm.String"/>
+                <Property Name="startTime" Type="Edm.String"/>
+                <Property Name="endTime" Type="Edm.String"/>
+                <Property Name="ACTIVECOUNT" Type="Edm.Int32"/>
+                <Property Name="createdAt" Type="Edm.String"/>
+                <Property Name="INACTIVECOUNT" Type="Edm.Int32"/>
+                <Property Name="jobId" Type="Edm.Int32"/>
+                <Property Name="jobType" Type="Edm.String"/>
+                <Property Name="signatureVersion" Type="Edm.Int32"/>
+                <Property Name="subDomain" Type="Edm.String"/>
+                <Property Name="user" Type="Edm.String"/>
+                <Property Name="_id" Type="Edm.Int32"/>
+            </ComplexType>
+            <ComplexType Name="js_Schedules">
+                <Property Name="data" Type="Edm.String"/>
+                <Property Name="description" Type="Edm.String"/>
+                <Property Name="active" Type="Edm.Boolean"/>
+                <Property Name="startTime" Type="Edm.String"/>
+                <Property Name="endTime" Type="Edm.String"/>
+                <Property Name="cron" Type="Edm.String"/>
+                <Property Name="time" Type="Edm.String"/>
+                <Property Name="repeatInterval" Type="Edm.String"/>
+                <Property Name="repeatAt" Type="Edm.String"/>
+                <Property Name="nextRunAt" Type="Edm.String"/>
+                <Property Name="scheduleId" Type="Edm.String"/>
+                <Property Name="type" Type="Edm.String"/>
+            </ComplexType>
+            <ComplexType Name="js_RunLogs">
+                <Property Name="runId" Type="Edm.String"/>
+                <Property Name="httpStatus" Type="Edm.Int32"/>
+                <Property Name="executionTimestamp" Type="Edm.String"/>
+                <Property Name="runStatus" Type="Edm.String"/>
+                <Property Name="runState" Type="Edm.String"/>
+                <Property Name="statusMessage" Type="Edm.String"/>
+                <Property Name="scheduleTimestamp" Type="Edm.String"/>
+                <Property Name="completionTimestamp" Type="Edm.String"/>
+                <Property Name="runText" Type="Edm.String"/>
+            </ComplexType>
+            <ComplexType Name="js_mlJobs">
+                <Property Name="name" Type="Edm.String"/>
+                <Property Name="description" Type="Edm.String"/>
+                <Property Name="action" Type="Edm.String"/>
+                <Property Name="active" Type="Edm.Boolean"/>
+                <Property Name="httpMethod" Type="Edm.String"/>
+                <Property Name="startTime" Type="Edm.String"/>
+                <Property Name="endTime" Type="Edm.String"/>
+                <Property Name="ACTIVECOUNT" Type="Edm.Int32"/>
+                <Property Name="createdAt" Type="Edm.String"/>
+                <Property Name="INACTIVECOUNT" Type="Edm.Int32"/>
+                <Property Name="jobId" Type="Edm.Int32"/>
+                <Property Name="jobType" Type="Edm.String"/>
+                <Property Name="signatureVersion" Type="Edm.Int32"/>
+                <Property Name="subDomain" Type="Edm.String"/>
+                <Property Name="user" Type="Edm.String"/>
+                <Property Name="_id" Type="Edm.Int32"/>
+                <Property Name="schedules" Type="Collection(JobsService.js_mlSchedules)" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="js_mlSchedules">
+                <Property Name="data" Type="JobsService.js_mlSchedules_data"/>
+                <Property Name="description" Type="Edm.String"/>
+                <Property Name="active" Type="Edm.Boolean"/>
+                <Property Name="startTime" Type="Edm.String"/>
+                <Property Name="endTime" Type="Edm.String"/>
+                <Property Name="cron" Type="Edm.String"/>
+                <Property Name="time" Type="Edm.String"/>
+                <Property Name="repeatInterval" Type="Edm.String"/>
+                <Property Name="repeatAt" Type="Edm.String"/>
+            </ComplexType>
+            <ComplexType Name="js_mlSchedules_data">
+                <Property Name="vcRulesList" Type="Collection(JobsService.js_mlSchedules_data_vcRulesList)" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="js_mlSchedules_data_vcRulesList">
+                <Property Name="profile" Type="Edm.String" MaxLength="50"/>
+                <Property Name="override" Type="Edm.Boolean"/>
+                <Property Name="version" Type="Edm.String" MaxLength="10"/>
+                <Property Name="scenario" Type="Edm.String" MaxLength="32"/>
+                <Property Name="Location" Type="Edm.String" MaxLength="4"/>
+                <Property Name="Product" Type="Edm.String" MaxLength="40"/>
+                <Property Name="GroupID" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Type" Type="Edm.String" MaxLength="10"/>
+                <Property Name="modelVersion" Type="Edm.String" MaxLength="20"/>
+                <Property Name="dimensions" Type="Edm.Int32"/>
+            </ComplexType>
+            <Annotations Target="JobsService.EntityContainer/jobs" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/JOB_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Job ID"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/JOB_NAME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Job Name"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/ACTION" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Action"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/ACTIVE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Active"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/HTTP_METHOD" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Http Method"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/CREATAT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Created At"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/JOB_DES" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Job Description"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/JOB_TYPE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Job Type"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/START_TIME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Start TIme"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/END_TIME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="End Time"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/ACTIVECOUNT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Active Count"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/INACTIVECOUNT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="InActive Count"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/SIGNATURE_VERSION" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Signature Version"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/SUB_DOMAIN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Sub Domain"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/USER" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="User"/>
+            </Annotations>
+            <Annotations Target="JobsService.jobs/SCHEDULE_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Schedule ID"/>
+            </Annotations>
+            <Annotations Target="JobsService.EntityContainer/schedules" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="JobsService.schedules/SCHEDULE_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Schedule ID"/>
+            </Annotations>
+            <Annotations Target="JobsService.schedules/SCH_DESC" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Schedule Description"/>
+            </Annotations>
+            <Annotations Target="JobsService.schedules/SCH_DATA" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Schedule Data"/>
+            </Annotations>
+            <Annotations Target="JobsService.schedules/SCH_TYPE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Cron/one-time"/>
+            </Annotations>
+            <Annotations Target="JobsService.schedules/SCH_ACTIVE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Schedule Active"/>
+            </Annotations>
+            <Annotations Target="JobsService.schedules/SCH_STARTTIME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Schedule Startime"/>
+            </Annotations>
+            <Annotations Target="JobsService.schedules/SCH_END_TIME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Schedule Endtime"/>
+            </Annotations>
+            <Annotations Target="JobsService.schedules/SCH_TIME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Schedule Time"/>
+            </Annotations>
+            <Annotations Target="JobsService.schedules/SCH_NEXTRUN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Schedule Nextrun At"/>
+            </Annotations>
+            <Annotations Target="JobsService.schedules/RUN_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Run ID"/>
+            </Annotations>
+            <Annotations Target="JobsService.EntityContainer/logs" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record Type="Capabilities.DeleteRestrictionsType">
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="JobsService.logs/RUN_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Run ID"/>
+            </Annotations>
+            <Annotations Target="JobsService.logs/HTTP_STATUS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="HTTP Status code"/>
+            </Annotations>
+            <Annotations Target="JobsService.logs/EXECUTION_TIMESTAMP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Execution TimeStamp"/>
+            </Annotations>
+            <Annotations Target="JobsService.logs/RUN_STATUS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Run Status"/>
+            </Annotations>
+            <Annotations Target="JobsService.logs/RUN_STATE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Run State"/>
+            </Annotations>
+            <Annotations Target="JobsService.logs/STATUS_MESSAGE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Status Message"/>
+            </Annotations>
+            <Annotations Target="JobsService.logs/SCHEDULED_TIMESTAMP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Scheduled Timestamp"/>
+            </Annotations>
+            <Annotations Target="JobsService.logs/COMPLETED_TIMESTAMP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Completed Timestamp"/>
+            </Annotations>
+            <Annotations Target="JobsService.logs/runtext" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Run Text"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>JOB_ID</PropertyPath>
+                        <PropertyPath>RUN_STATE</PropertyPath>
+                        <PropertyPath>RUN_STATUS</PropertyPath>
+                        <PropertyPath>CRITICALSTATUS</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="JOB_ID"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="JOB_NAME"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SCH_STARTTIME"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="SCH_END_TIME"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="RUN_STATUS"/>
+                            <PropertyValue Property="Criticality" Path="CRITICALSTATUS"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="RUN_STATE"/>
+                            <PropertyValue Property="Criticality" Path="CRITICALSTATE"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="JOB_ID"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="JOB_NAME"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TypeName" String="Job Logs"/>
+                        <PropertyValue Property="TypeNamePlural" String="Job Logs"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Description"/>
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Medium"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Description">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="RUN_STATE"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Details">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="JOB_DES"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ACTION"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SCH_STARTTIME"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SCH_END_TIME"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SCH_TIME"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SCH_NEXTRUN"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="RUN_ID"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="RUN_STATUS"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="STATUS_MESSAGE"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="SCHEDULED_TIMESTAMP"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="COMPLETED_TIMESTAMP"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="ID" String="Joblogs"/>
+                            <PropertyValue Property="Label" String="Job Scheduler Logs"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Job Logs"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Details"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/JOB_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Job ID"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/JOB_NAME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Job Name"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/ACTION" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Action"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/JOB_DES" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Job Description"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/SCH_STARTTIME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Scheduled Start Time"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/SCH_END_TIME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Scheduled End time"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/SCH_TIME" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Scheduled Time"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/SCH_NEXTRUN" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Scheduled Next Run"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/RUN_ID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Run ID"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/RUN_STATUS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Run Status"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/CRITICALSTATUS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CRITICALSTATUS"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/RUN_STATE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Run State"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/CRITICALSTATE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="CRITICALSTATE"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/STATUS_MESSAGE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Status Message"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/SCHEDULED_TIMESTAMP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Scheduled Timestamp"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/COMPLETED_TIMESTAMP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Completed Timestamp"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobStatus/RUNTEXT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="Run Text"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobRunStatus/RUN_STATUS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="RUN_STATUS"/>
+            </Annotations>
+            <Annotations Target="JobsService.getJobRunState/RUN_STATE" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Label" String="RUN_STATE"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

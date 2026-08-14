@@ -1,0 +1,38 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog id="runTextJLT" title="RUN TEXT" titleAlignment="Center" contentWidth="800px">
+        <content>
+            <Table id="jobTableJLT" mode="None" 
+                   items="{path: '/aItems'}">
+                <columns>
+                    <Column width="3%">
+                        <Label text="Type" />
+                    </Column>
+					<Column width="6%">
+                        <Label text="Time" />
+                    </Column>
+					<Column width="12%">
+                        <Label text="Text" />
+                    </Column>
+					<!-- <Column>
+                        <Label text="Code"/>
+                    </Column> -->
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells> 
+                        <ObjectIdentifier title="{type}" text="{code}"></ObjectIdentifier>
+                         <!-- <Text text="{parts: [{path: 'type'}, {path: 'code'}], formatter: '.formatTextAndCode'}"/> -->
+                          <!-- <FormattedText htmlText="{parts: [{path: 'type'}, {path: 'code'}], formatter: '.formatTextAndCode'}"/> -->
+							<Text text="{time}"></Text>
+							<Text text="{text}"></Text>
+							<!-- <Text text="{code}"></Text> -->
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+		<endButton>
+		<Button type="Reject" text="Close" press="onClose"></Button>
+		</endButton>
+    </Dialog>
+</core:FragmentDefinition>

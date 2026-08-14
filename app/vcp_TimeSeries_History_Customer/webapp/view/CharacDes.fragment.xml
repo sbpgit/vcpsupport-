@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="CharaDesTHC" title="{i18n>rowid}" rememberSelections="true" search="handleSearch" liveChange="handleSearch"
+		confirm="handleSelection" cancel="handleClose" multiSelect="false"  contentWidth="420px" items="{/results}" 
+        selectionChange="handleProdChange" growing="false">
+		<StandardListItem title="{CHAR_NUM}" description="{CHAR_DESC}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>

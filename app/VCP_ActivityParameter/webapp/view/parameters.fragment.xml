@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+	
+		id="idParaDialogAP"
+		title="Parameters"
+		items="{/paritems}"
+		multiSelect="true"
+		selectionChange=""
+		liveChange="handleParaSearch"
+		confirm="handleParaSelection" rememberSelections="true"
+		cancel="handleClose">
+		<StandardListItem id="idlistAP"
+			title="{PARAMETER_ID}" description="{PARAM_DESC}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

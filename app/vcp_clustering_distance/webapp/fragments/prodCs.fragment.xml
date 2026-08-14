@@ -1,0 +1,24 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+        id="idProdCsFrag"
+		noDataText="No Products Found"
+		title="Partial Product"
+		liveChange=".onSearchProdFrag"
+		searchPlaceholder="Search Products"
+		confirm=".onProdValueHelpDialogClose"
+		cancel=".onProdValueHelpDialogClose"
+		items="{
+			path: '/items',
+			sorter: {
+				path: 'PRODUCT_ID',
+				descending: false
+			}
+		}">
+		<StandardListItem
+			title="{PRODUCT_ID}"
+            description="{PROD_DESC}"
+		/>
+	</SelectDialog>
+</core:FragmentDefinition>

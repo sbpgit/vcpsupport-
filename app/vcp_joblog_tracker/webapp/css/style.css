@@ -1,0 +1,76 @@
+/* Enter your custom styles here */
+/* div#__vbox5 {
+    flex-direction: row;
+    margin-top: 1.3rem;
+    margin-left: 1rem;
+} */
+
+
+/* div#__vbox1 {padding: 5px;}
+
+div#__vbox2 {
+    padding: 5px;
+}
+
+div#__vbox3 {
+    padding: 5px;
+}
+
+div#__vbox4 {
+    padding: 5px;
+}
+
+div#__data26 {
+    padding: 3px;
+}
+div#__data31 {margin-top: 5.2px;} */
+
+
+/* .sapUiSizeCompact .sapUxAPObjectPageSectionHeader,.sapUxAPObjectPageSectionHeader {
+    height: 0.75rem !important;
+    line-height: 2.25rem
+} */
+
+/* div#__vbox7 {
+    flex-direction: row !important;
+    margin-left: 20px !important;
+    margin-top: 29px !important;
+}
+
+#TableList{
+    height: 300px !important;
+}
+
+div#__section0 {margin-top: -4rem !important;}
+
+
+div#__vbox1 {padding-left: 9px !important;}
+
+div#__vbox2 {
+    padding-left: 9px !important;
+}
+
+div#__vbox3 {
+    padding-left: 9px !important;
+}
+
+div#__vbox4 {
+    padding-left: 9px !important;
+}
+
+div#__vbox6 {
+    padding-left: 9px !important;
+}
+
+div#__vbox8 {
+    margin-left: 43% !important;
+    margin-top: 32px !important;
+    flex-flow: nowrap !important;
+} */
+
+*{
+    scrollbar-width: thin;
+    /*"auto"or "thin"*/
+    scrollbar-color: #888 #f1f1f1;
+    /*thumb and track color*/
+}

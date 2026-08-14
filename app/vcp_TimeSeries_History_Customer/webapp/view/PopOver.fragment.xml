@@ -1,0 +1,25 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		id="myPopoverTHC"
+		title="My Views"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer pop"
+		placement="Bottom"
+		initialFocus="idSaveAs">
+		<footer>
+			<OverflowToolbar >
+				<ToolbarSpacer />
+				<Button	id="idSave" text="Save" press="onSave" visible="false" />
+                <Button	id="idSaveTHC" text="Save As" press="onVariantSave" type="Emphasized" />
+                <Button	id="idManageTHC" text="Manage" press="onManageOpen" />
+			</OverflowToolbar>
+		</footer>
+		<List id="idMatListTHC"
+				items="{path: '/items1'}" mode="SingleSelectMaster" selectionChange="handleSelectPress" showSeparators="None"  >
+		<StandardListItem type="Active" 
+			title="{VARIANTNAME}"
+			/>
+	</List>
+	</Popover>
+</core:FragmentDefinition>

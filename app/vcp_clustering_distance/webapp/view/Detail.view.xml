@@ -1,0 +1,25 @@
+<mvc:View controllerName="vcpapp.vcpclusteringdistance.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="DetailCS" title="Detail" showNavButton="false" showHeader="false"
+		navButtonPress="onBack">
+    <content>
+    <OverflowToolbar height="50px">
+    <Button icon="sap-icon://nav-back" press="onBack"></Button>
+    <Title text="Characteristics" ></Title>
+    <ToolbarSpacer />
+                                            <RadioButtonGroup id="idRBGCharsCS" columns="3" valueState="Information" select="onSelectRBCharFilter">
+                                                <RadioButton id="idAllCharsCS" text="All" selected="true" />
+                                                <RadioButton id="idMatchdCS" text="Matched" />
+                                                <RadioButton id="idUnMatchdCS" text="UnMatched" />
+                                            </RadioButtonGroup>
+    </OverflowToolbar>
+     <t:Table id="idTableDetailCS" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiSmallMarginTop" fixedColumnCount="1" selectionMode="None" alternateRowColors="true" enableSelectAll="false" >
+     
+                                            <t:columns />
+                                        </t:Table>
+    </content>
+     </Page>
+</mvc:View>

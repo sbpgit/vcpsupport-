@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="oScenarioPS"
+		title="IBP Scenario"
+		items="{/aItems}"
+		selectionChange="RequireProduct"
+		liveChange=".handleSearch1"
+		confirm=".onScenarioSelect"
+		cancel=".onScenarioSelect">
+		<StandardListItem
+			title="{SCENARIO}"
+			description="{SCENARIO_NAME}" />
+	</SelectDialog>
+</core:FragmentDefinition>

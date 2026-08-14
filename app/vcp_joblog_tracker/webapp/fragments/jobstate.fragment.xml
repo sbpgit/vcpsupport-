@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="jstateJLT" title="RUN STATE" rememberSelections="false" search="handleSearch" liveChange="handleSearch"
+		confirm="handleSelection" cancel="handleClose"  contentWidth="250px" items="{/aItems}" 
+        selectionChange="handleProdChange" growing="false">
+		<StandardListItem title="{RUN_STATE}" type="Active"/>
+	</SelectDialog>
+</core:FragmentDefinition>

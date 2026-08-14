@@ -1,0 +1,106 @@
+<mvc:View controllerName="vcpapp.vcpclusteringdistance.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout" 
+    xmlns:ux="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns="sap.m">
+    <Page id="pageCS" showHeader="false">
+	<ux:ObjectPageLayout id="ObjectPageLayoutCS" headerContentPinned="true" showTitleInHeaderContent="false" >
+       
+
+       <ux:headerTitle>
+            <ux:ObjectPageDynamicHeaderTitle visible="false">
+            	
+					<ux:snappedHeading>
+					</ux:snappedHeading>
+					<ux:navigationActions>
+						<!-- <Button icon="sap-icon://sys-help" id="idNav3" press="onNavPress" type="Emphasized" tooltip="Help Document"/> -->
+					</ux:navigationActions>
+              
+            </ux:ObjectPageDynamicHeaderTitle>
+        </ux:headerTitle>
+
+        <ux:headerContent>
+        <layout:VerticalLayout >
+        <Label text="" labelFor="idSearch"/>
+        <SearchField liveChange="onSearch" class="sapUiMediumMarginEnd" id="idSearchCS" width="15rem" placeholder="PRPID/ Cluster ID"/>
+        </layout:VerticalLayout>
+        <layout:VerticalLayout>
+        <Label text="Demand Location" labelFor="idLocCs" required="true"/>
+         <Input 
+			id="idLocCs"
+			type="Text"
+			placeholder="Demand Location"
+			showValueHelp="true"
+			valueHelpOnly="true"
+			valueHelpRequest=".onLocCSValueHelpRequest"
+			class="sapUiMediumMarginEnd"
+			width="15rem" /> 
+        </layout:VerticalLayout>
+        <layout:VerticalLayout >
+        <Label text="Partial Product" labelFor="idProdCs" required="true"/>
+        <Input
+			id="idProdCs"
+			type="Text"
+			placeholder="Partial Product"
+			showValueHelp="true"
+			valueHelpOnly="true"
+			valueHelpRequest=".onProdCSValueHelpRequest"
+			class="sapUiMediumMarginEnd"
+			width="15rem" /> 
+        </layout:VerticalLayout>
+        <layout:VerticalLayout >
+        <Label text="" labelFor="idGo"/>
+        <Button text="Go" id="idGoCS" class="sapUiTinyMarginEnd" press="onGo" type="Emphasized"/>
+        </layout:VerticalLayout>
+        <layout:VerticalLayout>
+        <Label text="" labelFor="idReset"/>
+        <Button text="Reset" id="idResetCS" press="onReset" type="Emphasized"/>
+        </layout:VerticalLayout>
+        
+        </ux:headerContent>
+
+        <ux:ObjectPageSection showTitle="false" >
+        <ux:ObjectPageSubSection showTitle="false" >
+		
+        <Table id="idTableCS" items="{/items}" growing="true" growingScrollToLoad="true" selectionChange="onRowSelect" sticky="ColumnHeaders" visible="false" mode="SingleSelectMaster">
+          
+            <columns>
+
+                <Column minScreenWidth="Tablet" demandPopin="true" mergeDuplicates="true">
+                    <Text text="PRPID"/>
+                </Column>
+                <Column >
+                    <Text text="Cluster ID"/>
+                </Column>
+
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="Target Cluster ID"/>
+                </Column>
+
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="Distance"/>
+                </Column>              
+
+            </columns>
+           
+            <items>
+
+            <ColumnListItem>
+                <cells>
+                    <Link text="{PRPID}" press="onCell"/>
+                    <Text text="{CLUSTER_ID}"></Text>
+                    <Text text="{TARGET_CLUSTER_ID}"></Text>
+                    <Text text="{DISTANCE}"></Text>
+                </cells>
+
+                </ColumnListItem>
+            </items>
+        </Table>
+        </ux:ObjectPageSubSection>
+        </ux:ObjectPageSection>
+        </ux:ObjectPageLayout>
+    
+    </Page>
+</mvc:View>

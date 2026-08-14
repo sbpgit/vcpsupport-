@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog id="_IDGenDialog1AP" title="Manage Views" class="sapUiContentPadding" contentWidth="50%" titleAlignment="Center">
+        <Toolbar id="IDGenToolbar1AP">
+            <SearchField id="_IDGenSearchField1AP" width="100%" liveChange="handleSearch" placeholder="View Name/User" />
+        </Toolbar>
+        <Table id="varNameListAP" items="{path: '/items1'}" >
+            <columns>
+                <Column id="_IDGenColumn1AP">
+                    <Text id="_IDGenText1AP" text="View" />
+                </Column>
+                <Column id="_IDGenColumn3AP"  minScreenWidth="Tablet" demandPopin="true">
+                    <Text id="_IDGenText3AP" text="Default" />
+                </Column>                
+                <Column id="_IDGenColumn6AP" minScreenWidth="Tablet" demandPopin="true">
+                    <Text id="_IDGenText6AP" text="Created By" />
+                </Column>
+                <Column id="_IDGenColumn5AP" visible="false" minScreenWidth="Tablet" demandPopin="true">
+                    <Text id="_IDGenText5AP" text="Variant ID" />
+                </Column>
+                <Column id="_IDGenColumn7AP" visible="true" hAlign="End" minScreenWidth="Tablet" demandPopin="true">
+                    <Text id="_IDGenText7AP" text="" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <Text  text="{VARIANTNAME}" />
+                        <RadioButton  selected="{= ${DEFAULT} === 'Y'}" />
+                        <Text  text="{USER}" />
+                        <Text  text="{VARIANTID}" />
+                        <Button  icon="sap-icon://decline" visible="{=${VARIANTNAME}!=='Standard'}" press="onViewDelete" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <buttons>
+            <Button id="_IDGenButtAP" type='Emphasized' text="Save" press="onManage" />
+            <Button id="IDGenButton2AP"  text="Close" press="handleManageClose" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

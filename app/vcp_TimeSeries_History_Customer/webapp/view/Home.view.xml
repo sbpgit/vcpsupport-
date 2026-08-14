@@ -1,0 +1,162 @@
+<mvc:View controllerName="vcpapp.vcptimeserieshistoryv3.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:ux="sap.uxap"
+    xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:t="sap.ui.table">
+    <Page id="_IDGenPage1tTHC" showHeader="false" showFooter="true" enableScrolling="false">
+        <content>
+            <ux:ObjectPageLayout id="ObjectPageLayoutTHC">
+                <ux:headerTitle>
+                    <ux:ObjectPageDynamicHeaderTitle>                       
+                        <ux:navigationActions>
+                            <Button class="classHdr" icon="sap-icon://sys-help" id="idNav3THC" press="onNavPress" type="Emphasized" tooltip="Help Document" />
+                        </ux:navigationActions>
+                    </ux:ObjectPageDynamicHeaderTitle>
+                </ux:headerTitle>
+                <ux:headerContent>
+                    <HBox>
+                        <VBox class="hbox1" >
+                            <Label text="" />
+                            <SearchField search="onSearch" liveChange="onSearch" width="250px" id="onTabSearchTHC"  />
+                        </VBox>
+                        <VBox  class="hbox1">
+                            <Label text="Demand Location" required="true" />
+                            <MultiInput id="idlocTHC" width = "200px" placeholder="Demand Location" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                        </VBox>
+                        <VBox class="hbox1">
+                            <Label text="Product" required="true" />
+                            <MultiInput id="prodInputTHC" width = "200px"   placeholder="Product" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                        </VBox>
+                        <!-- <VBox class="hbox1">
+                            <Label text="Characteristic Number" />
+                            <MultiInput id="idChar" width = "200px"  placeholder="Characteristic Number" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                        </VBox> -->
+
+                            <VBox class="hbox1">
+                            <Label text=" Customer Group" />
+                            <MultiInput id="idCustTHC" width = "200px"  placeholder="Customer Group" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                        </VBox>
+                        <VBox id="_IDGenVBox5THC" class="hbox1">
+                            <Label id="_IDGenLabel5" text="Week Date" />
+                            <ComboBox id="fromDateTHC"  width = "200px" placeholder="Select Date" items="{path:'/resultsCombos'}" change="handleDateChange"  editable="false">
+                                <core:Item id="_IDGenItem1THC" key="{key}" text="{DATE}" />
+                            </ComboBox>
+                        </VBox>
+                        <VBox class="hbox1">
+                            <Label text="" />
+                            <HBox>
+                                <Button text="Go" type="Emphasized" press="onGetData" tooltip="Get data based on filters" />
+                                <Button text="Reset" type="Transparent" press="onResetData" tooltip="Reset" />
+                            </HBox>
+                        </VBox>
+                    </HBox>
+
+
+                </ux:headerContent>
+                <ux:ObjectPageSection>
+                    <ux:ObjectPageSubSection>
+                    
+                           
+                                <Table id="orderListTHC" visible="true" sticky="ColumnHeaders" growingThreshold="1000" items="{path: '/'}" growing="false" growingScrollToLoad="false" itemPress="onhandlePress" mode="SingleSelectMaster" selectionChange="onhandlePress" rememberSelections="false" growingDirection="Downwards" updateFinished="onTableUpdate">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <ToolbarSpacer/>
+                                            <Button id="idDownloadTHC" icon="" text="Download" press="onDownLoadPress"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column hAlign="Begin" vAlign="Middle" width="auto">
+                                            <Text text="Date" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle">
+                                            <Text text="Demand Location" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle" width="auto">
+                                            <Text text="Product" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="auto" vAlign="Middle" visible="false">
+                                            <Text text="Char. Num" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="auto" vAlign="Middle" visible="false">
+                                            <Text text="Char. Value" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle">
+                                            <Text text="Type" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle">
+                                            <Text text="Group ID" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle" visible="false">
+                                            <Text text="Row ID" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle" >
+                                            <Text text="Customer Group" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="auto" vAlign="Middle" visible="false">
+                                            <Text text="Char. Count" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="auto" vAlign="Middle" visible="false">
+                                            <Text text="Char. Count Rate" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="auto" vAlign="Middle">
+                                            <Text text="Group Count" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="auto" vAlign="Middle">
+                                            <Text text="Group Count Rate" />
+                                        </Column>
+
+
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                                <Text text="{CAL_DATE}" />
+                                                <Text text="{LOCATION_ID}" />
+                                                <Text text="{PRODUCT_ID}" />
+                                                <Text text="{CHAR_NUM}" />
+                                                <Text text="{CHAR_VALUE}" />
+                                                <Text text="{TYPE}" />
+                                                <Text text="{GROUP_ID}" />
+                                                <Text text="{ROW}" />
+                                                <Text text="{CUSTOMER_GROUP}" />
+                                                <Text text="{CHAR_COUNT}" />
+                                                <Text text="{CHAR_COUNT_RATE}" />
+                                                <Text text="{GROUP_COUNT}" />
+                                                <Text text="{GROUP_COUNT_RATE}" />
+
+
+                                                <!-- <Link id="btnEdit" text="{OBJ_DEP}" press="edit"/> -->
+                                                <!-- //   <Text text= "{OBJ_DEP}" press="handleDepLinkPress" /> -->
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                    </ux:ObjectPageSubSection>
+                </ux:ObjectPageSection>
+
+                <!--        
+           <ux:sections>
+            <ux:ObjectPageSection>
+                <ux:subSections>
+                    <ux:ObjectPageSubSection>
+                        <ux:blocks>
+                        </ux:blocks>
+                    </ux:ObjectPageSubSection>
+                </ux:subSections>
+            </ux:ObjectPageSection>
+             <ux:ObjectPageSection>
+                <ux:subSections>
+                    <ux:ObjectPageSubSection>
+                    </ux:ObjectPageSubSection>
+                </ux:subSections>
+            </ux:ObjectPageSection>
+        </ux:sections> -->
+            </ux:ObjectPageLayout>
+        </content>
+    </Page>
+</mvc:View>

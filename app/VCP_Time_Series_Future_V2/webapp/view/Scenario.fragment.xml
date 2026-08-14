@@ -1,0 +1,24 @@
+<!-- <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="oScenario"
+		title="IBP Scenario"
+		items="{/results}"
+		selectionChange="handleSelection"
+		multiSelect="true"
+		liveChange=".handleSearch"
+		confirm=".onScenarioSelect"
+		cancel=".onScenarioSelect">
+		<StandardListItem
+			title="{SCENARIO_NAME}"
+			description="{SCENARIO}" />
+	</SelectDialog>
+</core:FragmentDefinition> -->
+
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="oScenarioTSF" title="IBP Scenario" rememberSelections="true" contentWidth="15%" contentHeight="50%" search="handleSearch" liveChange="handleSearch"
+		confirm="handleSelection" cancel="handleClose" multiSelect="false" items="{/results}" 
+        selectionChange="handleProdChange" growing="false">
+		<StandardListItem title="{SCENARIO_NAME}" description="{SCENARIO}" type="Active"/>
+		
+	</SelectDialog>
+</core:FragmentDefinition>

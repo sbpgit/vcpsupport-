@@ -1,0 +1,50 @@
+<mvc:View
+    xmlns:semantic="sap.m.semantic"
+    xmlns:table="sap.ui.table"
+    controllerName="vcpapps.vcpactivityparameter.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+
+    <Page
+        id="page"
+        title="Parameter Details" titleAlignment="Center" showNavButton="true" navButtonPress="onNavBack">
+    
+        <Table
+            id="idparameterAP"
+            items="{path: '/results'}"
+            mode="SingleSelectMaster"
+            sticky="HeaderToolbar,ColumnHeaders"
+            fixedLayout="false"
+            contextualWidth="Auto"
+            growing="true"
+            growingThreshold="100"
+            selectionChange="rowSelection">
+        
+            <columns>
+              
+                <Column
+                    hAlign="Left"
+                    vAlign="Middle">
+                    <Text text="Parameter" />
+                </Column>
+                <Column
+                    hAlign="Left"
+                    vAlign="Middle">
+                
+                    <Text text="Parameter Selection" />
+                </Column>
+               
+            </columns>
+            <items>
+                <ColumnListItem>
+                
+                    <Text text="{PARAM_DESC}" />
+                    <Text text="{OPTION_SELECT}" />
+                   
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+</mvc:View>

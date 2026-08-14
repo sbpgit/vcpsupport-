@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="oProductPS"
+		title="Configurable Product"
+		items="{/aItems}"
+		selectionChange="RequireProduct"
+		liveChange=".handleSearch1"
+		confirm=".onProductSelect"
+		cancel=".onProductSelect">
+		<StandardListItem
+			title="{PRODUCT_ID}"
+			description="{PRODUCT_DESC}" />
+	</SelectDialog>
+</core:FragmentDefinition>

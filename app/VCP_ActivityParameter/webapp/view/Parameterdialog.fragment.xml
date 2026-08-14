@@ -1,0 +1,66 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+    <Dialog id="idparameterdialogAP" title="Parameters" contentWidth="50%" class="sapUiMediumMarginEnd" afterClose="closeBatchFragment">
+
+        <content>
+            <HeaderContainer >
+
+            </HeaderContainer>
+
+
+            <Table id="idpar1AP" items="{path: '/items'}" mode="SingleSelectMaster" sticky="HeaderToolbar,ColumnHeaders" fixedLayout="false" contextualWidth="Auto" growing="true" growingThreshold="100" selectionChange="rowselection1">
+                <headerToolbar >
+                    <OverflowToolbar height="70px">
+                        <l:VerticalLayout>
+
+
+                            <Label text="Parameter ID"></Label>
+                            <MultiInput id="idparidAP" required="true" showValueHelp="true" valueHelpOnly="true" class="inputs" valueHelpRequest="handleValueHelp2" />
+                        </l:VerticalLayout>
+                        <l:VerticalLayout>
+                            <Label text=""/>
+                            <Button type="Emphasized" text="Go" press="onGo"></Button>
+                        </l:VerticalLayout>
+                        <l:VerticalLayout>
+                            <Label text=""/>
+                            <Button type="Emphasized" text="Reset" press="onReset"></Button>
+                        </l:VerticalLayout>
+
+                        <ToolbarSpacer/>
+                        <l:VerticalLayout>
+                            <Label text=""/>
+                            <Button type="Transparent" text="Edit" press="onEdit" tooltip=" Edit" id="onEditAP"></Button>
+                        </l:VerticalLayout>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column hAlign="Left" vAlign="Middle">
+
+                        <Text text="Parameter ID" />
+                    </Column>
+                    <Column hAlign="Left" vAlign="Middle">
+                        <Text text="Parameter Description" />
+                    </Column>
+
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <Text text="{PARAMETER_ID}" />
+                        <Text text="{PARAM_DESC}" />
+
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+        </content>
+        <endButton>
+
+            <Button id="idcloseAP" text="Cancel" type="Transparent" press="closeFragment1" />
+
+        </endButton>
+
+    </Dialog>
+</core:FragmentDefinition>

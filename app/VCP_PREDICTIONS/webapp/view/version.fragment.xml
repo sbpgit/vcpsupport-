@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="oVersionPS"
+		title="IBP Version"
+		items="{/aItems}"
+		selectionChange="RequireProduct"
+		liveChange=".handleSearch1"
+		confirm=".onVersionSelect"
+		cancel=".onVersionSelect">
+		<StandardListItem
+			title="{VERSION_NAME}" description="{VERSION}" />
+	</SelectDialog>
+</core:FragmentDefinition>

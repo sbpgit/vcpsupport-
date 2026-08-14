@@ -1,0 +1,110 @@
+<mvc:View xmlns:filterbar="sap.ui.comp.filterbar"
+    xmlns:f="sap.f" xmlns:l="sap.ui.layout" controllerName="vcpapp.vcpmodelversion.controller.Home"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <f:DynamicPage id="dynamicPageMV" showFooter="true" headerPinned="true">
+    <f:title>
+			<f:DynamicPageTitle >
+
+				<f:heading >
+               
+            
+					<l:HorizontalLayout>
+
+						<Label id="idVariantNameMV" required="false" text="" class="Text" />
+						<ToggleButton id="idDropDownMV" icon="sap-icon://slim-arrow-down" press="onDropDownPress" />
+                        </l:HorizontalLayout>
+                        </f:heading >
+                        <f:navigationActions>
+                        <Button class="hdrBtnMarginHdr1" id="_IDGenOverflowToolbarButton2MV" icon="sap-icon://sys-help"
+                                    text=""
+                                    type="Emphasized"
+                                    press="onNavPress"
+                                    tooltip="Help Document"
+                                />
+                                </f:navigationActions>
+					
+                 
+                    
+			</f:DynamicPageTitle>
+		</f:title>
+        <f:header>
+            <f:DynamicPageHeader>
+                <filterbar:FilterBar id="idFilterBarMV" search="onGetData" showClearOnFB="true" clear="onResetData" useToolbar="false" showFilterConfiguration="false">
+                    <filterbar:filterGroupItems>
+                        <filterbar:FilterGroupItem label="Manufacturing Location" mandatory="true" name="LOCATION_ID" groupName="group1" visibleInFilterBar="true">
+                            <filterbar:control>
+                                <Input id="idlocMV" class="flux" width="300px" placeholder="Location" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onLocation" />
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem label="Product" mandatory="true"  name="PRODUCT_ID" groupName="group1" visibleInFilterBar="true">
+                            <filterbar:control>
+                                <Input id="prodInputMV" class="flux" width="300px" placeholder="Product" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onProduct" />
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem label="Model Version" mandatory="true" name="MODEL_VERSION" groupName="group1" visibleInFilterBar="true">
+                            <filterbar:control>
+                                <Input id="idModelMV" class="flux" width="300px" placeholder="Model Version" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="oModelVersion" />
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                        <filterbar:FilterGroupItem label="Object Type" name="OBJ_TYPE" groupName="group1" visibleInFilterBar="true">
+                            <filterbar:control>
+                                <Input id="idTypeMV" class="flux" width="300px" placeholder="Object Type" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="oBjectType" />
+                            </filterbar:control>
+                        </filterbar:FilterGroupItem>
+                    </filterbar:filterGroupItems>
+                </filterbar:FilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table id="orderListMV" growing="true" sticky="ColumnHeaders" growingScrollToLoad="true" growingDirection="Downwards" growingThreshold="20" updateFinished="onTableUpdate" items="{path: '/aItems'}" itemPress="onhandlePress" mode="SingleSelectMaster" selectionChange="onhandlePress" rememberSelections="false">
+                   <headerToolbar>
+                                        <OverflowToolbar>
+                                            <ToolbarSpacer/>
+                                            <Button id="idDownload1MV" icon="" text="Download" press="onDownLoadPress"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                
+                <columns>
+                    <Column hAlign="Left" width="10%" vAlign="Middle">
+                        <Text text="{i18n>objdep}" />
+                    </Column>
+                    <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{i18n>objcount}" />
+                    </Column>
+                    <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{i18n>objty}" />
+                    </Column>
+
+                    <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{i18n>modelprof}" />
+                    </Column>
+                    <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{i18n>modeltype}" />
+                    </Column>
+                    <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{i18n>dimensions}" />
+                    </Column>
+                    <Column hAlign="Left" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{i18n>timestamp}" />
+                    </Column>
+
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text= "{OBJ_DEP}" />
+                            <Text text= "{OBJ_COUNTER}" />
+                            <Text text= "{OBJ_TYPE}" />
+                            <Text text= "{MODEL_PROFILE}" />
+                            <Text text= "{MODEL_TYPE}" />
+                            <Text text= "{DIMENSIONS}" />
+                            <Text text= "{TIMESTAMP}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

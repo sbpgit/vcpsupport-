@@ -1,0 +1,461 @@
+/* Enter your custom styles here */
+.title{
+  text-align: center;
+}
+.centered-title {
+  text-align: center;
+}
+/* .wtHolder{
+  position: relative;
+  height: 348px !important;
+  width: 1423px;
+} */
+/* .wtHolder::-webkit-scrollbar {
+  height: 348px !important;
+}
+
+.wtHolder::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+.wtHolder::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.5); 
+}
+
+/* For WebKit-based browsers (Chrome, Safari, Edge) */
+/*#excelGridPS::-webkit-scrollbar {
+  width: 30px !important; /* Increase scrollbar width 
+} */
+
+#excelGridPS::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Scrollbar track color */
+}
+
+#excelGridPS::-webkit-scrollbar-thumb {
+  background-color: #888; /* Scrollbar thumb color */
+  border-radius: 10px;     /* Rounded corners for the thumb */
+}
+
+#excelGridPS::-webkit-scrollbar-thumb:hover {
+  background-color: #555;  /* Change color on hover */
+}
+
+/* For Firefox */
+#excelGridPS {
+  scrollbar-width: thin; /* Options: auto, thin */
+  scrollbar-color: #888 #f1f1f1; /* Thumb and track colors */
+}
+
+
+.invalidData {
+  color: red;
+}
+.multi{
+  width:50px !important;
+}
+.algorithm{
+  margin-top: 0px !important;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+}
+
+*/ .no-data-message {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #999;
+  margin-top: 20px;
+}
+
+.highlighted {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+td.column-to-style {
+  /* Add your styles here */
+  font-weight: bold;
+  color: blue;
+}
+
+.item {
+  background-color: #1c5ed8;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+}
+
+/* .comb{
+      padding-left: 30px;
+      width:"200px"
+    } */
+.invalidCell {
+  color: red;
+}
+
+.ValidCell {
+  color: green;
+}
+
+/* .inputContainer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    
+      } */
+
+.class1 {
+  margin-right: 20px;
+}
+/* .row2{
+  margin-top:5px;
+} */
+
+/* .BOX{
+        align-items: stretch;
+        margin-right: 20px;
+        margin-top: 36px;
+        margin-left: 35px;
+       
+    }
+     */
+.BT1 {
+  margin-left: 5px;
+  margin-top: 22px;
+  border-radius: 0px !important;
+}
+span.sapMBtnInner.sapMBtnEmphasized {
+  background-image: none;
+  border-color: #4fb26c;
+  color: #fff;
+  text-shadow: 0 0 0.125rem transparent;
+  border-radius: 4px;
+}
+
+.BT {
+  margin-left: 75%;
+  gap: 8px;
+}
+
+/* .Fil {
+  text-align: center;
+  margin-top: 50px;
+  background: white;
+  padding: 20px;
+  font-size: large;
+} */
+
+#noFilter {
+  width: 100%;
+  padding: 10px;
+  margin-top: 50px;
+  color: #555;
+  background: lightgoldenrodyellow;
+
+}
+
+.hover-cell {
+  background-color: blue;
+  /* Change the background color to your desired color */
+  cursor: pointer;
+  /* Change the cursor to a pointer or your desired style */
+}
+
+/* .show {
+        visibility: visible;
+      }
+      
+      .hide {
+        visibility: hidden;
+      } */
+/* /* Custom styles for Handsontable */
+.handsontable {
+  border: 1px solid #f2f2f2;
+  font-family: "72", "72full", Arial, Helvetica, sans-serif
+}
+
+.handsontable td {
+  font-family: "72", "72full", Arial, Helvetica, sans-serif
+}
+/* div#__data26 {
+margin-top: -7px;
+margin-left: 97%;
+} */
+
+/* .ht_master .htCore th {
+  background-color: #f0f0f0;
+} */
+/* Customize cell styles */
+.ht_master .htCore td {
+  text-align: center;
+  /* font-weight: bold; */
+  margin-top: 2px;
+}
+
+/* Define the hover effect for the current cell */
+/* .current-cell:hover {
+    background-color: #ffcccb; /* Change the background color on hover */
+/* }
+
+.hoverable-cell {
+  cursor: pointer;
+} */
+
+.hovered {
+  background-color: #f5f5f5;
+}
+
+.hover-cell:hover {
+  background-color: rgb(178, 249, 178);
+  cursor: pointer;
+}
+
+.success-row {
+  background-color: lightgreen;
+}
+
+.failure-row {
+  background-color: lightcoral;
+}
+.sap-icon {
+  font-family: 'SAP-icons'; /* Replace with your SAP icons font name if necessary */
+}
+
+.hover-success {
+  cursor: pointer;
+}
+
+.hover-fail {
+  background-color: lightcoral;
+  cursor: pointer;
+}
+
+.ht__highlight thead {
+  background-color: lightcoral;
+  width: 150px;
+}
+
+ .success-cell {
+  text-align: center !important;
+  margin-top:5px !important;
+  padding-top:5px !important;
+}
+/*.success-fail {
+  background-color: lightcoral;
+} */
+.handsontable .htCommentCell:after {
+  border-left: 6px solid transparent;
+  border-right: none;
+  border-top: 3px solid #000 !important;
+  content: "";
+  left: unset;
+  color: red;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* .fail-cell {
+  border-top: 6px solid red !important;
+} */
+.handsontable {
+  margin-top: 10px;
+}
+
+/* .handsontable col.rowHeader {
+  width: 180px;
+} */
+
+/* .handsontable td:nth-child(n+6):hovered {
+  background-color: lightgray;
+} */
+/* .handsontable td:nth-child(n+1) {
+ padding-top:0px !important;
+} */
+
+/* .disable-cursor {
+  cursor: not-allowed;
+} */
+
+.success-cell {
+  cursor: pointer
+  /* border-top: 2px solid rgb(158, 232, 158);
+  background-color: rgb(102, 251, 64); */
+}
+
+.htCommentsContainer .htCommentTextArea {
+  pointer-events: none !important;
+  background-color: #ffffff !important;
+  border: none;
+  border-left: 3px solid #ccc;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .118), 0 1px 2px rgba(0, 0, 0, .239);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 12px;
+  height: 60px;
+  outline: 0 !important;
+  padding: 5px;
+  width: 350px !important;
+}
+
+.comment-success {
+  color: green;
+}
+
+.comment-fail {
+  color: red;
+}
+
+.comment-pending {
+  color: yellow;
+}
+.comment-custom-style {
+  color: red; /* Customize the styles as needed */
+  font-weight: bold;
+  /* Add more styles here */
+}
+.all{
+  text-align:center;
+  float:right;
+}
+.status-container {
+  /* float:right; */
+  display: flex;
+  flex-direction: row;
+  margin-left: 600px;
+  margin-top: 23px;
+}
+.custom-excel {
+  color: black !important; /* Example CSS styling */
+  font-weight: bold !important;
+ 
+ 
+}
+
+
+/* div#__hbox3 {
+  margin-left: 500px;
+  margin-top: 30px;
+}
+div#__hbox5 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+} */
+.status-container > HBox {
+  margin-top: 30px;
+} 
+
+.handsontable .htDimmed {
+  color: #0c0c0c !important;
+}
+
+.square {
+  margin-left:10px;
+  border-radius: 50% !important;
+  background-color: #121211 !important;
+}
+.square1 {
+  margin-left:10px;
+  border-radius: 50% !important;
+  background-color: #f21843 !important;
+}
+.square2 {
+  margin-left:10px;
+  /* background-color: #F7F3D6 !important; */
+  border-radius: 50% !important; 
+  color:#F7F3D6;
+}
+.square3 {
+  margin-left:10px;
+}
+.text{
+  margin-left:5px;
+}
+.text1{
+  margin-left:3px;
+
+}
+.text2{
+  margin-left:3px;
+}
+.text3{
+  margin-left:3px;
+}
+.bold-text {
+  font-weight: bold;
+}
+
+/* 
+.handsontable .htDimmed {
+  color: #0c0c0c !important;
+} */
+
+
+/* 
+on Left
+ */
+
+
+.fil{
+  margin-top: 10px;
+  margin-right:2px;
+  font: 0.8em sans-serif;
+  font-weight: bold;
+
+}
+.Text{
+  font-size:1.25rem;
+  padding-top:0.3rem;
+  padding-right:0.2rem;
+  color: #0a6ed1;
+}
+.boldText{
+  margin-left:450px;
+}
+.pop{
+  width : 25%;
+}
+
+@media screen and (man-width: 680px) {
+  .boldText{
+    margin-left:550px !important;
+  }
+}
+
+span.colHeader {font-family: '72-SemiboldDuplex';}
+/* .sapMDialog.sapMDialogWithSubHeader .sapMDialogTitleGroup .sapMIBar {
+  box-shadow: none;
+  color:white !important;
+  background-color: #000;
+}
+.sapMDialog>header .sapMDialogTitleGroup .sapMTitle {
+  color: #fff;
+  vertical-align: middle;
+}
+.sapMDialog footer .sapMTB.sapMFooter-CTX {
+  border-bottom: none;
+  background-color: black;
+}
+.sapMFooter-CTX .sapMBtnInner :not(.sapMBtnDisabled), html.sap-desktop .sapMFooter-CTX .sapMBtnInner :not(.sapMBtnDisabled) {
+  border-color: None;
+  color: aliceblue;
+} */
+
+/* after Model Version */
+
+div#__vbox5 {
+  margin-left: 354px;
+  margin-top: -52px;
+}
+div#container-vcpapp\.vcppredictions---Home--chkbox {
+  margin-left: 15px;
+}

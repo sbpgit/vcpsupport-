@@ -1,0 +1,5 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+ 
+    <Link id="btnEditTSF" core:require="{ handler: 'cpapp/cpobjectdep/controller/ListReportExtController'}"
+	 text="{OBJ_DEP}" press="handler.edit" />
+</core:FragmentDefinition>

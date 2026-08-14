@@ -1,0 +1,24 @@
+{
+  "generationParameters": {
+    "generationDate": "Mon Sep 08 2025 10:46:48 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "https://sbpbtp-vcpprovider-sc0jeojq-dev-config-products-srv.cfapps.us10.hana.ondemand.com/v2/catalog",
+    "appName": "runtime_errorlogs",
+    "appTitle": "Run Time_Error Logs",
+    "appDescription": "Run Time_Error Logs",
+    "appNamespace": "vcpapp",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.122.2",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.18.6",
+    "template": "Basic V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}

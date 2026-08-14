@@ -1,0 +1,269 @@
+[
+  {
+    "_version": "3.0",
+    "identification": {
+      "id": "vcpsupport-catalog",
+      "title": "catalog.vcpsupport.title",
+      "entityType": "catalog"
+    },
+    "payload": {
+      "viz": [
+        {
+          "appId": "vcpapps.vcpactivityparameter",
+          "vizId": "vcpactivityparameter-display"
+        },
+        {
+          "appId": "vcpapp.vcpmodelversion",
+          "vizId": "ModelVer-display"
+        },
+        {
+          "appId": "vcpapp.vcppredictions",
+          "vizId": "getPredictions-Display"
+        },
+        {
+          "appId": "vcpapp.vcplocproduniqid",
+          "vizId": "LocProdID-Display"
+        },
+        {
+          "appId": "vcpapp.vcpjoblog",
+          "vizId": "JobLog-display"
+        },
+        {
+          "appId": "vcpapp.vcptimeserieshistoryv2",
+          "vizId": "TimSerHis-display"
+        },
+        {
+          "appId": "vcpapp.vcptimeseriesfuturev2",
+          "vizId": "vcptimeseriesfuture-display"
+        },
+        {
+          "appId": "vcpapp.vcpoptimizedpredictions",
+          "vizId": "vcpoptimizedpredictions-display"
+        },
+        {
+          "appId": "vcpapp.vcpibpcalendarmaintenance",
+          "vizId": "IBPCalendarMaintain-display"
+        },
+        {
+          "appId": "vcpapp.runtimeerrorlogs",
+          "vizId": "Runtimeerrorlog-display"
+        },
+        {
+          "appId": "vcpapp.vcpclusteringdistance",
+          "vizId": "ClusteringDistance-DISPLAY"
+        },
+        {
+          "appId": "vcpapp.vcpprodordconsumption",
+          "vizId": "prodorderconsum-display"
+        },
+        {
+          "appId": "vcpapp.vcptimeserieshistoryv3",
+          "vizId": "TimSerHis-Display"
+        },
+        {
+          "appId": "vcpapp.vcpcriticalcomp",
+          "vizId": "Critical-Display"
+        }
+      ]
+    },
+    "texts": [
+      {
+        "locale": "",
+        "textDictionary": {
+          "catalog.vcpsupport.title": "VCP Sass Location Management"
+        }
+      }
+    ]
+  },
+  {
+    "_version": "3.0",
+    "identification": {
+      "id": "vcpsupport-group",
+      "title": "Support",
+      "entityType": "group"
+    },
+    "payload": {
+      "viz": [
+        {
+          "appId": "vcpapps.vcpactivityparameter",
+          "vizId": "vcpactivityparameter-display"
+        },
+        {
+          "appId": "vcpapp.vcpmodelversion",
+          "vizId": "ModelVer-display"
+        },
+        {
+          "appId": "vcpapp.vcppredictions",
+          "vizId": "getPredictions-Display"
+        },
+        {
+          "appId": "vcpapp.vcplocproduniqid",
+          "vizId": "LocProdID-Display"
+        },
+        {
+          "appId": "vcpapp.vcpjoblog",
+          "vizId": "JobLog-display"
+        },
+        {
+          "appId": "vcpapp.vcptimeserieshistoryv2",
+          "vizId": "TimSerHis-display"
+        },
+        {
+          "appId": "vcpapp.vcptimeseriesfuturev2",
+          "vizId": "vcptimeseriesfuture-display"
+        },
+        {
+          "appId": "vcpapp.vcpoptimizedpredictions",
+          "vizId": "vcpoptimizedpredictions-display"
+        },
+        {
+          "appId": "vcpapp.vcpibpcalendarmaintenance",
+          "vizId": "IBPCalendarMaintain-display"
+        },
+        {
+          "appId": "vcpapp.runtimeerrorlogs",
+          "vizId": "Runtimeerrorlog-display"
+        },
+        {
+          "appId": "vcpapp.vcpclusteringdistance",
+          "vizId": "ClusteringDistance-DISPLAY"
+        },
+        {
+          "appId": "vcpapp.vcpprodordconsumption",
+          "vizId": "prodorderconsum-display"
+        },
+        {
+          "appId": "vcpapp.vcptimeserieshistoryv3",
+          "vizId": "TimSerHis-Display"
+        },
+        {
+          "appId": "vcpapp.vcpcriticalcomp",
+          "vizId": "Critical-Display"
+        }
+      ]
+    },
+    "texts": [
+      {
+        "locale": "",
+        "textDictionary": {
+          "group.vcpsupport.title": "Support"
+        }
+      }
+    ]
+  },
+  {
+    "_version": "3.0",
+    "identification": {
+      "id": "VCPSupportRole",
+      "entityType": "role",
+      "title": "VCP Support Role",
+      "description": "VCP Support Role"
+    },
+    "payload": {
+      "apps": [
+        {
+          "id": "vcpapps.vcpactivityparameter"
+        },
+        {
+          "id": "vcpapp.vcpmodelversion"
+        },
+        {
+          "id": "vcpapp.vcppredictions"
+        },
+        {
+          "id": "vcpapp.vcplocproduniqid"
+        },
+        {
+          "id":"vcpapp.vcpjoblog"
+        },
+        {
+          "id": "vcpapp.vcptimeserieshistoryv2"
+        },
+        {
+          "id": "vcpapp.vcptimeseriesfuturev2"
+        },
+        {
+          "id": "vcpapp.vcpoptimizedpredictions"
+        },
+        {
+          "id": "vcpapp.vcpibpcalendarmaintenance"
+        },
+        {
+          "id": "vcpapp.runtimeerrorlogs"
+        },
+        {
+          "id": "vcpapp.vcpclusteringdistance"
+        },
+        {
+          "id": "vcpapp.vcpprodordconsumption"
+        },
+        {
+          "id": "vcpapp.vcptimeserieshistoryv3"
+        },
+         {
+          "id": "vcpapp.vcpcriticalcomp"
+        }
+      ],
+      "catalogs": [
+        {
+          "id": "vcpsupport-catalog"
+        }
+      ],
+      "groups": [
+        {
+          "id": "vcpsupport-group"
+        }
+      ],
+      "spaces":   [{ "id": "vcpsupport-space" }]
+    }
+  },
+   {
+    "_version": "3.2.0",
+    "identification": {
+      "id": "vcpsupport-page",
+      "title": "Support",
+      "entityType": "page"
+    },
+    "payload": {
+      "layout": {
+        "sectionLayout": "tabbed"
+      },
+      "sections": [
+        {
+          "id": "vcpsupport-section-1",
+          "title": "Support",
+          "viz": [
+            { "appId": "vcpapps.vcpactivityparameter", "vizId": "vcpactivityparameter-display" },
+            { "appId": "vcpapp.vcpmodelversion",        "vizId": "ModelVer-display" },
+            { "appId": "vcpapp.vcppredictions",        "vizId": "getPredictions-Display" },
+            { "appId": "vcpapp.vcplocproduniqid",      "vizId": "LocProdID-Display" },
+            { "appId": "vcpapp.vcpjoblog",             "vizId": "JobLog-display" },
+            { "appId": "vcpapp.vcptimeserieshistoryv2","vizId": "TimSerHis-display" },
+            { "appId": "vcpapp.vcptimeseriesfuturev2", "vizId": "vcptimeseriesfuture-display" },
+            { "appId": "vcpapp.vcpoptimizedpredictions","vizId": "vcpoptimizedpredictions-display" },
+            { "appId": "vcpapp.vcpibpcalendarmaintenance","vizId": "IBPCalendarMaintain-display" },
+            { "appId": "vcpapp.runtimeerrorlogs",      "vizId": "Runtimeerrorlog-display" },
+            { "appId": "vcpapp.vcpclusteringdistance",  "vizId": "ClusteringDistance-DISPLAY" },
+            { "appId": "vcpapp.vcpprodordconsumption",  "vizId": "prodorderconsum-display" },
+            { "appId": "vcpapp.vcptimeserieshistoryv3",  "vizId": "TimSerHis-Display" },
+            {"appId": "vcpapp.vcpcriticalcomp",   "vizId": "Critical-Display"}
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "_version": "3.2.0",
+    "identification": {
+      "id": "vcpsupport-space",
+      "title": "Support",
+      "entityType": "space"
+    },
+    "payload": {
+      "contentNodes": [
+        { "id": "vcpsupport-page",
+      "type": "page" }
+      ]
+    }
+  }
+]

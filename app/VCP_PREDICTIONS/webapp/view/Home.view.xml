@@ -1,0 +1,156 @@
+<mvc:View controllerName="vcpapp.vcppredictions.controller.Home"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:l="sap.ui.layout"
+	xmlns:uxap="sap.uxap"
+	xmlns:layout="sap.ui.layout"
+	xmlns:u="sap.ui.unified"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:upload="sap.m.upload"
+	xmlns:f="sap.f">
+	<f:DynamicPage id="dynamicPageIdPS" showFooter="true" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
+		<!-- <f:title>
+			<f:DynamicPageTitle >
+
+				<f:heading >
+					<HBox>
+						<Label id="idVariantNamePS" required="false" text="" class="Text" />
+						<ToggleButton id="idDropDownPS" icon="sap-icon://slim-arrow-down" press="onDropDownPress" />
+						<Title text="{i18n>title}" class="boldText" titleAlignment="Center" wrapping="true" />
+
+					</HBox>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title> -->
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<layout:HorizontalLayout allowWrapping="true">
+					<layout:VerticalLayout>
+						<VBox class="class1">
+							<Label text="Demand Location" required="true" class="UCS"></Label>
+							<Input width="20rem" id="oLocPS" type="Text" class="disable-cursor" textFormatMode="KeyValue" valueHelpOnly="true" placeholder="Demand Location" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onLocation">
+							</Input>
+						</VBox>
+					</layout:VerticalLayout>
+					<layout:VerticalLayout>
+						<VBox class="class1">
+							<Label text="Configurable Product" required="true" class="UCS"></Label>
+							<Input class="CP" width="20rem" id="oProdPS" type="Text" textFormatMode="KeyValue" placeholder="Configurable Product" showSuggestion="true" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onProduct">
+
+							</Input>
+						</VBox >
+					</layout:VerticalLayout>
+					<layout:VerticalLayout>
+						<VBox class="class1">
+							<Label text="IBP Version" required="true"></Label>
+							<Input width="20rem" id="oVersPS" type="Text" textFormatMode="KeyValue" placeholder="Version" showSuggestion="true" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onIBPVersion" suggestionItems="{path: '/aitems'}">
+								<suggestionItems>
+									<core:Item text="{ PRODUCT_ID }" />
+								</suggestionItems>
+								<core:Item xmlns:core="sap.ui.core" key="PRODUCT_ID"></core:Item>
+
+							</Input>
+						</VBox >
+					</layout:VerticalLayout>
+					<layout:VerticalLayout >
+						<VBox class="class1">
+							<Label text="IBP Scenario" required="true" class="UCS"></Label>
+							<Input class="CP" width="20rem" id="oScenPS" type="Text" textFormatMode="KeyValue" placeholder="Scenario" showSuggestion="true" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onIBPScenHelpRequest" suggestionItems="{path: '/aitems'}">
+								<suggestionItems>
+									<core:Item text="{ PRODUCT_ID }" />
+								</suggestionItems>
+								<core:Item xmlns:core="sap.ui.core" key="PRODUCT_ID"></core:Item>
+							</Input>
+						</VBox>
+					</layout:VerticalLayout>
+
+				</layout:HorizontalLayout>
+
+				<layout:HorizontalLayout class  ="row2" allowWrapping="true">
+					<layout:VerticalLayout>
+						<VBox class="class1">
+							<Label text= 'Valid From' required="true" class="UCS" labelFor="DRS1"/>
+							<DateRangeSelection width="20rem" id="DRS1PS" class="DRS1" displayFormat="MM/dd/yyyy" value= "{
+								'type': 'sap.ui.model.type.DateInterval',
+								'formatOptions': {
+									'pattern': 'yyyy/MM/dd'
+								},
+								'parts': [
+									{
+										'type': 'sap.ui.model.type.Date',
+										'path': '/start'
+									},
+									{
+										'type': 'sap.ui.model.type.Date',
+										'path': '/end'
+									}
+								]
+							}" change="onDateRangeChange"/>
+
+						</VBox>
+
+
+						<l:HorizontalLayout allowWrapping="true">
+							<l:VerticalLayout >
+								<VBox class="class1">
+									<Label text="Model Version" class="UCS"></Label>
+									<Select id="idModelVerPS" selectedKey="Active" class="sapUiSmallMarginEnd">
+										<core:ListItem key="Active" text="Active"/>
+										<core:ListItem key="Simulation" text="Simulation"/>
+									</Select>
+								</VBox>
+							</l:VerticalLayout>
+						</l:HorizontalLayout>
+
+
+					</layout:VerticalLayout>
+					<layout:VerticalLayout>
+						<CheckBox text="Get Non-Zero" class="BT1" id="chkboxPS" selected="true" />
+					</layout:VerticalLayout>
+
+					<layout:VerticalLayout>
+						<VBox class="class1">
+							<HBox>
+								<Button text="Go" type="Emphasized" press="onGo" class="BT1"></Button>
+								<Button text="Reset" press="onReset" class="BT1"></Button>
+							</HBox>
+						</VBox>
+					</layout:VerticalLayout>
+				</layout:HorizontalLayout>
+			</f:DynamicPageHeader>
+		</f:header>
+		<!-- </html:div> -->
+		<f:content>
+
+			<VBox fitContainer="true">
+	
+				<HBox justifyContent="End">
+				  <CheckBox text="Details"  id="AlgorithmPS" select="onAlogorithm"  class="algorithm" selected="false" />
+					<Label text= 'Group Filters:  ' class="sapUiTinyMarginTop sapUiSmallMarginBeginEnd"/>
+					<MultiComboBox id="idSelectionPS" width="200px" selectionFinish="handleSelectionFinish">
+						<core:Item key="1" text="OBJ_COUNTER"/>
+						<core:Item key="2" text="OBJ_DEP"/>
+						<core:Item key="3" text="OBJ_TYPE"/>
+
+					</MultiComboBox>
+					<Button icon="sap-icon://arrow-left" press="onGoRight" id="onRightPS" tooltip="More details" visible="false" />
+					<Button icon="sap-icon://arrow-right"  class = "goarrow" press="GoLeft" id="onLeftPS" visible="false"></Button>
+				</HBox>
+				<html:div id="excelGridPS" class="hot handsontable htRowHeaders htColumnHeaders" />
+
+			</VBox>
+		</f:content>
+		<f:footer>
+			<OverflowToolbar id="idDownloadPS" visible="false">
+				<ToolbarSpacer  >
+				</ToolbarSpacer>
+				<Button id="BTnIdDownloadPS" icon="sap-icon://arrow-bottom" text="Download" press="onPres" type="Emphasized" />
+			</OverflowToolbar>
+		</f:footer>
+
+	</f:DynamicPage>
+</mvc:View>
+
+

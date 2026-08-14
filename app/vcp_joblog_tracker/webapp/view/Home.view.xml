@@ -1,0 +1,257 @@
+<mvc:View controllerName="vcpapp.vcpjoblog.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:ux="sap.uxap"
+    xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified">
+    <Page id="_IDGenPage1JLT" showHeader="false" showFooter="true"  enableScrolling="false" >
+        <content>
+            <ux:ObjectPageLayout   id="ObjectPageLayoutJLT" headerContentPinned="true" showTitleInHeaderContent="false" >
+              <ux:headerTitle>
+                    <ux:ObjectPageDynamicHeaderTitle id="_IDGenObjectPageDynamicHeaderTitle1JLT" visible="false">
+                        <ux:expandedHeading>
+                            <HBox id="_IDGenHBox4JLT">
+                               <!-- <Label id="idVariantName" required="false" text="" class="Text"/> -->
+                        <!-- <ToggleButton id="idDropDown" icon="sap-icon://slim-arrow-down" press="onDropDownPress"/> -->
+                                <!-- <variant:VariantManagement variantItems="{/items}" select="handleSelectPress" save="onCreate" enabled="true" manage="onManage" showExecuteOnSelection="true" showShare="true" id="Variants">
+                            <variant:variantItems>
+                                <variant:VariantItem id="_IDGenVariantItem1" text="{VARIANTNAME}" key="{VARIANTNAME}" />
+                            </variant:variantItems>
+                        </variant:VariantManagement> -->
+                                <!-- <Label id="idVariantName" required="false" text="" class="Text"/>
+                                <ToggleButton id="idDropDown" icon="sap-icon://slim-arrow-down" press="onDropDownPress"/>
+                                <Title id="_IDGenTitle1" text="{i18n>title}" class="Middle" /> -->
+                                <!-- <Button class="hdrBtnMarginHdr" id="_IDGenOverflowToolbarButton1" icon="sap-icon://sys-help" type="Emphasized" press="onNavPress" tooltip="Help Document" /> -->
+                            </HBox>
+                        </ux:expandedHeading>
+                        <ux:snappedHeading>
+                            <!-- <HBox id="_IDGenFlexBox1" fitContainer="true" alignItems="Center"> -->
+                                <!-- <Title id="_IDGenTitle2" text="{i18n>title}" wrapping="true" /> -->
+                                <!-- <Button class="hdrBtnMarginHdr1" id="_IDGenOverflowToolbarButton2" icon="sap-icon://sys-help" type="Emphasized" press="onNavPress" tooltip="Help Document" /> -->
+                            <!-- </HBox> -->
+                        </ux:snappedHeading>
+                        <!-- <ux:navigationActions>
+                            <Button class="classHdr" icon="sap-icon://sys-help" id="idNav3" press="onNavPress" type="Emphasized" tooltip="Help Document" />
+                        </ux:navigationActions> -->
+                    </ux:ObjectPageDynamicHeaderTitle>
+                </ux:headerTitle>
+                <!-- <ux:headerTitle>
+                    <ux:ObjectPageDynamicHeaderTitle>
+                        <ux:snappedHeading>
+                        </ux:snappedHeading>
+                    </ux:ObjectPageDynamicHeaderTitle>
+                </ux:headerTitle> -->
+                <ux:headerContent>
+                    <!-- <FlexBox wrap="Wrap" class=""  fitContainer="true"> -->
+                    <!-- <HBox > -->
+                      
+                        <l:VerticalLayout >
+                            <Label text="Search"/>
+                            <SearchField id="headSearchJLT" class="sapUiMediumMarginEnd" width="300px" search="handleSearch" liveChange="onSearch" placeholder="job id / job name" />
+                        </l:VerticalLayout>
+                        <l:VerticalLayout >
+                            <Label text="Location"  required='false' />
+                            <Input id="lidLocJLT" class="sapUiMediumMarginEnd" width="300px" placeholder="Location" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                       </l:VerticalLayout>
+                        <l:VerticalLayout >
+                            <Label text="Product"  required='true' />
+                            <Input id="liProdJLT" class="sapUiMediumMarginEnd" width="300px" placeholder="Product" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                        </l:VerticalLayout>
+                      <l:VerticalLayout >
+                            <Label text="Job ID"  required='false' />
+                            <Input id="JidJLT" class="sapUiMediumMarginEnd" width="300px" placeholder="Job Id" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                       </l:VerticalLayout>
+                        <l:VerticalLayout >
+                            <Label text="Job Name"  required='false' />
+                            <Input id="JnameJLT" width="300px" class="sapUiMediumMarginEnd" placeholder="Job Name" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp"/>
+                      </l:VerticalLayout>
+                        <!-- </HBox> -->
+                        <!-- <HBox > -->
+                       
+                        <l:VerticalLayout >
+                            <Label text="Run Status"  required='false' />
+                            <Input id="JRunStatusJLT" class="sapUiMediumMarginEnd" width="300px" placeholder="Job Status" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                        </l:VerticalLayout>
+                      <l:VerticalLayout >
+                            <Label text="Run State"  required='false' />
+                            <Input id="JRunStateJLT" class="sapUiMediumMarginEnd" width="300px" placeholder="Job State" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                        </l:VerticalLayout>
+                       <l:VerticalLayout >
+                        <Label text=""></Label>
+                            <Button text="Go" class="sapUiMediumMarginEnd" type="Emphasized" press="onGetData" tooltip="Get data based on filters" />
+                                
+                       </l:VerticalLayout>
+                       <l:VerticalLayout >
+                         <Label text=""></Label>
+                       <Button text="Reset" class="sapUiMediumMarginEnd" type="Transparent" press="onResetData" tooltip="Reset" />  </l:VerticalLayout>
+                        <!-- <VBox alignContent="End">
+                                <Button text="Refresh" type="Emphasized" id="btnRefresh" press="onGetData" tooltip ="refresh data"/>
+                        <Button text="Sync Job" type="Transparent" id="btnTemplate" press="onCreateJob"
+                                tooltip="Sync Job" icon="sap-icon://synchronize"></Button>
+                        </VBox> -->
+
+                          <!-- </HBox> -->
+                    <!-- </FlexBox> -->
+                </ux:headerContent>
+              
+                    <ux:ObjectPageSection showTitle="false">
+                       
+                            <ux:ObjectPageSubSection showTitle="false">
+                             
+                                    <Table id="TableListJLT"  growing="true" sticky="ColumnHeaders,HeaderToolbar" growingScrollToLoad="true" growingDirection="Downwards" growingThreshold="20"
+                                     updateFinished="onTableUpdate" items="{path: '/aItems'}" itemPress="onhandlePress" mode="SingleSelectMaster" selectionChange="onhandlePress" rememberSelections="false">
+                                      <headerToolbar>
+                <OverflowToolbar class="customToolbar" id="idToolbarJLT">
+                    <content>
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://action-settings" press="onSettings"></Button>
+                        <!-- <Button icon="sap-icon://sort" press="onSort"></Button> -->
+                        <!-- <OverflowToolbarMenuButton tooltip="Export" type="Transparent" text="Export" buttonMode="Split" icon="sap-icon://excel-attachment" defaultAction="onDownload" useDefaultActionOnly="true">
+							<menu>
+								<Menu itemSelected="onMenuAction">
+									<MenuItem text="Export" />
+									<MenuItem text="Export As..." />
+								</Menu>
+							</menu>
+						</OverflowToolbarMenuButton> -->
+
+                    </content>
+                </OverflowToolbar>
+            </headerToolbar>
+                                        <columns>
+                                             <Column   hAlign="Left" width="5%" vAlign="Middle">
+                                                <Text text="JOB ID" />
+                                            </Column>
+                                            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" width="12%" vAlign="Middle">
+                                                <Text text="JOB NAME" />
+                                            </Column>
+                                             <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" width="12%" vAlign="Middle">
+                                                <Text text="SCH START TIME" />
+                                            </Column>
+                                             <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" width="12%" vAlign="Middle">
+                                                <Text text="COMPLETED TIME STAMP" />
+                                            </Column>
+                                             <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" width="15%" vAlign="Middle">
+                                                <Text text="SCH END TIME" />
+                                            </Column>
+                                                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" width="7%" vAlign="Middle">
+                                                <Text text="RUN STATUS" />
+                                            </Column>
+                                             <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" width="6%" vAlign="Middle">
+                                                <Text text="RUN STATE" />
+                                            </Column>
+                                              <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" width="15%" vAlign="Middle">
+                                                <Text text="SCHEDULE NEXT RUN" />
+                                            </Column>
+                                            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left" width="6%" vAlign="Middle">
+                                                <Text text="RUN TEXT" />
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem>
+                                                <cells>
+                                                    <Text text= "{JOB_ID}" />
+                                                    <Text text= "{JOB_NAME}" />
+                                                    <Text text= "{SCH_STARTTIME}" />
+                                                    <Text text= "{COMPLETED_TIMESTAMP}" />
+                                                    <Text text= "{SCH_END_TIME}" />
+                                                    <Text text= "{RUN_STATUS}" />
+                                                    <Text text= "{RUN_STATE}" />
+                                                    <Text text="{SCH_NEXTRUN}"></Text>
+                                                    <Button text="Log" press="onShowLog"></Button>
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                    <!-- <t:Table id="TableList" rows="{path: '/aItems',sorter:{ path :'JOB_ID', descending:'true'}}"  sticky="ColumnHeaders"  visibleRowCount="17">
+                                    <t:columns>
+
+                                    <t:Column  sortProperty="JOB_ID">
+                                    <Label text="Job ID"></Label>
+                                    <t:template >
+                                    <Text text="{JOB_ID}"></Text>
+                                    </t:template>
+                                    </t:Column>
+
+                                    <t:Column >
+                                    <Label text="Job Name"></Label>
+                                    <t:template >
+                                    <Text text="{JOB_NAME}"></Text>
+                                    </t:template>
+                                    </t:Column>
+
+                                    <t:Column  sortProperty="SCH_STARTTIME">
+                                    <Label text="Sch Start Time"></Label>
+                                    <t:template >
+                                    <Text text="{SCH_STARTTIME}"></Text>
+                                    </t:template>
+                                    </t:Column>
+
+                                    <t:Column  sortProperty="COMPLETED_TIMESTAMP">
+                                    <Label text="Completed Time Stamp"></Label>
+                                    <t:template >
+                                    <Text text="{COMPLETED_TIMESTAMP}"></Text>
+                                    </t:template>
+                                    </t:Column>
+
+                                     <t:Column  sortProperty="SCH_END_TIME">
+                                    <Label text="Sch End Time"></Label>
+                                    <t:template >
+                                    <Text text="{SCH_END_TIME}"></Text>
+                                    </t:template>
+                                    </t:Column>
+
+                                    <t:Column >
+                                    <Label text="Run Status"></Label>
+                                    <t:template >
+                                    <Text text="{RUN_STATUS}"></Text>
+                                    </t:template>
+                                    </t:Column>
+
+                                    <t:Column >
+                                    <Label text="Run State"></Label>
+                                    <t:template >
+                                    <Text text="{RUN_STATE}"></Text>
+                                    </t:template>
+                                    </t:Column>
+
+                                    <t:Column  sortProperty="SCH NEXT RUN">
+                                    <Label text="Sch Next Run"></Label>
+                                    <t:template>
+                                    <Text text="{SCH_NEXTRUN}"></Text>
+                                    </t:template>
+                                    </t:Column>
+
+                                    <t:Column >
+                                    <Label text="Run Text"></Label>
+                                    <t:template>
+                                   <Button text="Log" press="onShowLog"></Button>
+                                    </t:template>
+                                    </t:Column>
+                                    </t:columns>
+                                    </t:Table> -->
+                                
+                            </ux:ObjectPageSubSection>
+                     
+                    </ux:ObjectPageSection>
+                
+<!-- object tool bar -->
+            </ux:ObjectPageLayout>
+           
+        </content>
+        <footer>
+              <OverflowToolbar id="_IDGenOverflowToolbar1JLT" >
+            <ToolbarSpacer id="_IDGenToolbarSpacer1JLT" />
+             <Button text="Sync Job" type="Transparent" id="btnTemplate" press="onCreateJob"
+                                tooltip="Sync Job" icon="sap-icon://synchronize"></Button>
+                <Button id="idDownloadJLT" icon="sap-icon://arrow-bottom" text="Download" press="onDownLoad" type="Emphasized" />
+                </OverflowToolbar>
+        </footer>
+
+    </Page>
+</mvc:View>

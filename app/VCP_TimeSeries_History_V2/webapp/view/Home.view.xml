@@ -1,0 +1,162 @@
+
+<mvc:View controllerName="vcpapp.vcptimeserieshistoryv2.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:ux="sap.uxap"
+    xmlns:l="sap.ui.layout"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:t="sap.ui.table">
+    
+            <ux:ObjectPageLayout id="ObjectPageLayoutTSH" headerContentPinned="true">
+                <ux:headerTitle>
+                    <ux:ObjectPageDynamicHeaderTitle>
+                        <ux:expandedHeading>
+                            <l:HorizontalLayout>
+							<m:VariantManagement id="idVariantTSH" select="handleSelectPress" save="onCreate"	manage="onManage" supportFavorites="false" 
+							showFooter="true"	popoverTitle="My Views" items="{path: '/items12'}" creationAllowed="true" 
+							supportPublic="true" supportApplyAutomatically="false" manageCancel="onManageCancel" cancel="onNameCancel" visible="false" >
+							<items>
+							<m:VariantItem key="{VARIANTID}" text="{VARIANTNAME}"  author="{USER}" visible="true" 
+							remove="{path:'REMOVE', formatter:'.formatter.formatRemove'}" sharing="{path:'SCOPE', formatter:'.formatter.formatScope'}"
+							changeable="{path:'CHANGE', formatter:'.formatter.formatChange'}" rename="false" enabled="{path:'ENABLE', formatter:'.formatter.formatEnable'}"/>
+								</items>
+						</m:VariantManagement>
+						</l:HorizontalLayout>
+                        </ux:expandedHeading>
+                        <ux:snappedHeading>
+                        <OverflowToolbar>
+                                <Title id="_IDGenTitle2TSH" text="" />
+                               
+                        </OverflowToolbar>
+                        </ux:snappedHeading>
+                        <ux:navigationActions>
+                            <Button class="classHdr" icon="sap-icon://sys-help" id="idNav3TSH" press="onNavPress" type="Emphasized" tooltip="Help Document" />
+                        </ux:navigationActions>
+                    </ux:ObjectPageDynamicHeaderTitle>
+                </ux:headerTitle>
+                <ux:headerContent>
+                        <l:VerticalLayout >
+                            <Label text="" />
+                            <SearchField search="onSearch" liveChange="onSearch" width="250px" id="onTabSearchTSH" class="sapUiTinyMarginEnd" />
+                        </l:VerticalLayout>
+                        <l:VerticalLayout >
+                            <Label text="Demand Location" required="true" />
+                            <MultiInput id="idlocTSH" width = "250px" class="sapUiTinyMarginEnd" placeholder="Demand Location" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                        </l:VerticalLayout>
+                        <l:VerticalLayout >
+                            <Label text="Product" required="true" />
+                            <MultiInput id="prodInputTSH" width = "250px" class="sapUiTinyMarginEnd"  placeholder="Product" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                        </l:VerticalLayout>
+                        <l:VerticalLayout >
+                            <Label text="Characteristic Number" />
+                            <MultiInput id="idCharTSH" width = "250px" class="sapUiTinyMarginEnd" placeholder="Characteristic Number" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+                        </l:VerticalLayout>
+                        <l:VerticalLayout >
+                            <Label id="_IDGenLabel5TSH" text="Week Date" />
+                            <ComboBox id="fromDateTSH"  width = "250px" class="sapUiTinyMarginEnd" placeholder="Select Date" items="{path:'/resultsCombos'}" change="handleDateChange"  editable="false">
+                                <core:Item id="_IDGenItem1TSH" key="{key}" text="{DATE}" />
+                            </ComboBox>
+                        </l:VerticalLayout>
+                        <l:VerticalLayout >
+                            <Label text="" />
+                            <Button text="Go" type="Emphasized" press="onGetData" class="sapUiTinyMarginEnd" tooltip="Get data based on filters" />
+                            </l:VerticalLayout>
+                            <l:VerticalLayout >
+                            <Label text="" />
+                            <Button text="Reset" type="Transparent" press="onResetData" tooltip="Reset" />
+                            </l:VerticalLayout>
+
+
+                </ux:headerContent>
+                <ux:ObjectPageSection showTitle="false">
+                    <ux:ObjectPageSubSection>
+                        <IconTabBar id="idIconTabBarTSH" select="onTabSelect">
+                            <items>
+                                <IconTabFilter text="Weekly" key="Weekly" />
+                                <IconTabSeparator />
+                                <IconTabFilter text="Daily" key="Daily" />
+                            </items>
+                            <!-- <ToolbarSpacer/> -->
+                                
+                            <content>
+                                <Table id="orderListTSH" visible="true" sticky="ColumnHeaders" growingThreshold="1000" 
+                                items="{path: '/', sorter: { path: 'GROUP_ID', descending: false}}" 
+                                growing="true" growingScrollToLoad="false" itemPress="onhandlePress" 
+                                mode="SingleSelectMaster" selectionChange="onhandlePress"
+                                rememberSelections="false" growingDirection="Downwards" updateFinished="onTableUpdate">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <ToolbarSpacer/>
+                                            <Button id="idDownloadTSH" icon="" text="Download" press="onDownLoadPress"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column hAlign="Begin" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Date" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle" >
+                                            <Text text="Demand Location" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Product" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Char. Num" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true"> 
+                                            <Text text="Char. Value" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Type" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Group ID" />
+                                        </Column>
+                                        <Column hAlign="Begin" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Row ID" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Char. Count" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="15%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Char. Count Rate" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Group Count" />
+                                        </Column>
+                                        <Column hAlign="Begin" width="10%" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Group Count Rate" />
+                                        </Column>
+
+
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                                <Text text="{CAL_DATE}" />
+                                                <Text text="{LOCATION_ID}" />
+                                                <Text text="{PRODUCT_ID}" />
+                                                <Text text="{CHAR_NUM}" />
+                                                <Text text="{CHAR_VALUE}" />
+                                                <Text text="{TYPE}" />
+                                                <Text text="{GROUP_ID}" />
+                                                <Text text="{ROW}" />
+                                                <Text text="{CHAR_COUNT}" />
+                                                <Text text="{CHAR_COUNT_RATE}" />
+                                                <Text text="{GROUP_COUNT}" />
+                                                <Text text="{GROUP_COUNT_RATE}" />
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </content>
+                        </IconTabBar>
+                    </ux:ObjectPageSubSection>
+                </ux:ObjectPageSection>
+
+            </ux:ObjectPageLayout>
+           
+</mvc:View>

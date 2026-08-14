@@ -1,0 +1,68 @@
+<mvc:View controllerName="vcpapps.vcpactivityparameter.controller.Home" xmlns="sap.m"   xmlns:l="sap.ui.layout"
+  	xmlns:mvc="sap.ui.core.mvc"                                                                            
+		xmlns:f="sap.f"	
+		height="100%">
+		<f:DynamicPage id="dynamicPageIdAP" headerPinned="true">	
+			<f:title>
+				<f:DynamicPageTitle id ="iddynamicAP">
+					<f:heading>
+						<l:HorizontalLayout>
+						<Label id="idVariantNameAP" required="false" text="" class="Text" />
+						<ToggleButton id="idDropDownAP" icon="sap-icon://slim-arrow-down" press="onDropDownPress" />
+					</l:HorizontalLayout>
+					</f:heading>							
+				</f:DynamicPageTitle>
+			</f:title>      
+			
+			<f:header>
+			<f:DynamicPageHeader pinnable="true">
+            	<l:VerticalLayout>
+					<Label text="Activity ID"></Label>
+						    <Input id="idActIDAP" width="300px" class="sapUiMediumMarginEnd" value="" required="true" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelp" />
+					</l:VerticalLayout>		
+					<l:VerticalLayout>
+					<Label text=""></Label>
+					<Button type="Emphasized" text="Go" class="sapUiTinyMarginEnd" press="onGoBtnPress"></Button>
+					</l:VerticalLayout>	
+					<l:VerticalLayout>
+					<Label text=""></Label>
+					<Button type="Transparent" text="Reset" class="sapUiTinyMarginEnd"  press="onResetDate"></Button>
+					</l:VerticalLayout>	
+                    <l:VerticalLayout>
+					<Label text=""></Label>
+					<Button type="Emphasized" text="Parameters list"  press="onpress"></Button>
+					</l:VerticalLayout>	
+					</f:DynamicPageHeader>
+					</f:header>
+		<f:content>
+		
+				 <Table id="idActivityAP" items="{path: '/items'}" mode="SingleSelectMaster" sticky="HeaderToolbar,ColumnHeaders"
+                          fixedLayout="false" contextualWidth="Auto" growing="true" growingThreshold="100" selectionChange="rowSelection">                
+                <columns>
+                    <Column hAlign="Left" vAlign="Middle">
+                        <Text text="Activity ID" />
+                    </Column>
+                    <Column hAlign="Left" vAlign="Middle">
+                        <Text text="Activity Description" />
+                    </Column>
+                    <Column hAlign="Left" vAlign="Middle">
+                        <Text text="Activity Action"/>
+                    </Column>
+                   
+                </columns>
+                <items>
+                    <ColumnListItem type="Navigation" >
+                        <Text text="{ACTIVITY_ID}"/>
+                        <Text text="{ACTIVITY_DESC}"/>
+                        <Text text="{ACTION_URL}"/>
+                      
+                    </ColumnListItem>
+                </items>
+            </Table>
+           
+		</f:content>
+			
+		</f:DynamicPage>
+
+</mvc:View>
+

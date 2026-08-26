@@ -31,7 +31,7 @@ server:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
           - path: /v2
-            url: https://sbpbtp-vcpprovider-sc0jeojq-dev-config-products-srv.cfapps.us10.hana.ondemand.com
+            url: https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com
             destination: ConfigProdAuth
     - name: sap-fe-mockserver
       beforeMiddleware: csp
@@ -43,3 +43,8 @@ server:
             mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
         annotations: []
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**

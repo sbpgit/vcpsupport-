@@ -17,7 +17,7 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /v2
-            url: https://sbpbtp-vcpprovider-sc0jeojq-dev-config-products-srv.cfapps.us10.hana.ondemand.com
+            url: https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com
             destination: ConfigProdAuth
     - name: fiori-tools-appreload
       afterMiddleware: compression
@@ -40,3 +40,8 @@ server:
             mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
         annotations: []
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**

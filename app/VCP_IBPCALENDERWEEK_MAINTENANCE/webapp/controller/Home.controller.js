@@ -971,12 +971,13 @@ sap.ui.define([
             sap.ui.core.BusyIndicator.show();
             const tableData = this.byId("idTabCM").getItems();
             const payload = ExcelUtils.buildPayloadFromTable(tableData, this);
+            var oPayload = {
+                    CalendarData: JSON.stringify(payload)
+                };
 
             this.getOwnerComponent().getModel("oModel").callFunction("/updateCalenderWeek", {
-                method: "GET",
-                urlParameters: {
-                    CalendarData: JSON.stringify(payload)
-                },
+                method: "POST",
+                urlParameters: oPayload,
                 success: (oData) => {
                     const success = oData.updateCalenderWeek.includes("Successfully");
                     sap.m.MessageToast.show(success ? "Updated successfully" : "Updation failed");

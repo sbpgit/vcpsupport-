@@ -53,7 +53,7 @@
           "vizId": "ClusteringDistance-DISPLAY"
         },
         {
-          "appId": "vcpapp.vcpprodordconsumption",
+          "appId": "vcpapp.vcpprodordconsumptionpivot",
           "vizId": "prodorderconsum-display"
         },
         {
@@ -129,7 +129,7 @@
           "vizId": "ClusteringDistance-DISPLAY"
         },
         {
-          "appId": "vcpapp.vcpprodordconsumption",
+          "appId": "vcpapp.vcpprodordconsumptionpivot",
           "vizId": "prodorderconsum-display"
         },
         {
@@ -195,7 +195,7 @@
           "id": "vcpapp.vcpclusteringdistance"
         },
         {
-          "id": "vcpapp.vcpprodordconsumption"
+          "id": "vcpapp.vcpprodordconsumptionpivot"
         },
         {
           "id": "vcpapp.vcptimeserieshistoryv3"
@@ -244,7 +244,7 @@
             { "appId": "vcpapp.vcpibpcalendarmaintenance","vizId": "IBPCalendarMaintain-display" },
             { "appId": "vcpapp.runtimeerrorlogs",      "vizId": "Runtimeerrorlog-display" },
             { "appId": "vcpapp.vcpclusteringdistance",  "vizId": "ClusteringDistance-DISPLAY" },
-            { "appId": "vcpapp.vcpprodordconsumption",  "vizId": "prodorderconsum-display" },
+            { "appId": "vcpapp.vcpprodordconsumptionpivot",  "vizId": "prodorderconsum-display" },
             { "appId": "vcpapp.vcptimeserieshistoryv3",  "vizId": "TimSerHis-Display" },
             {"appId": "vcpapp.vcpcriticalcomp",   "vizId": "Critical-Display"}
           ]

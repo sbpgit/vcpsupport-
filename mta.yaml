@@ -366,7 +366,7 @@ resources:
               Name: vcpsupport-workzone-runtime
               ProxyType: Internet
               Type: HTTP
-              URL: https://mttsbpdigital.launchpad.cfapps.us10.hana.ondemand.com
+              URL: https://sbp-mttdev.launchpad.cfapps.us10.hana.ondemand.com
             existing_destinations_policy: update
 
   - name: vcpsupport-repo-host

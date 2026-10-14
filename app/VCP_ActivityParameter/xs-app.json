@@ -5,21 +5,21 @@
     {
       "source": "^/v2/job-scheduler/(.*)$",
       "target": "/v2/job-scheduler/$1",
-      "destination": "ConfigProdAuth",
+      "destination": "VCPlanneroAuth",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
     {
       "source": "^/v2/catalog/(.*)$",
       "target": "/v2/catalog/$1",
-      "destination": "ConfigProdAuth",
+      "destination": "VCPlanneroAuth",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },
     {
       "source": "^/v2/jobs/(.*)$",
       "target": "/v2/jobs/$1",
-      "destination": "ConfigProdAuth",
+      "destination": "VCPlanneroAuth",
       "authenticationType": "xsuaa",
       "csrfProtection": false
     },

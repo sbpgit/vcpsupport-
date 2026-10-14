@@ -32,7 +32,7 @@ server:
         backend:
           - path: /v2
             url: https://sbpmtt-dev-vcplanner-mt-srv.cfapps.us10-001.hana.ondemand.com
-            destination: ConfigProdAuth
+            destination: VCPlanneroAuth
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:
